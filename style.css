@@ -1,0 +1,676 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Tahoma, sans-serif;
+    background: #f3eee5;
+    color: #333;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    padding: 25px 18px;
+}
+
+/* Header */
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.book-icon {
+    font-size: 45px;
+    margin-bottom: 8px;
+}
+
+.header h1 {
+    font-size: 34px;
+    color: #4b4b4b;
+    margin-bottom: 8px;
+}
+
+.header p {
+    font-size: 22px;
+    font-weight: bold;
+    color: #756f63;
+    margin-bottom: 8px;
+}
+
+.header span {
+    color: #777;
+    font-size: 15px;
+}
+
+
+/* Cards */
+
+.payment-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+.payment-card {
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 28px 22px;
+    text-align: center;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.08);
+
+    transition: transform 0.25s ease;
+}
+
+.payment-card:hover {
+    transform: translateY(-5px);
+}
+
+.payment-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 170px;
+    height: 55px;
+
+    border-radius: 14px;
+
+    font-size: 22px;
+    font-weight: bold;
+
+    margin-bottom: 18px;
+}
+
+.instapay .payment-logo {
+    background: #eee6f8;
+    color: #6b2fa0;
+}
+
+.vodafone .payment-logo {
+    background: #fbe8e8;
+    color: #c80000;
+}
+
+.payment-card h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.number {
+    direction: ltr;
+    font-size: 19px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+
+/* QR */
+
+.qr-box {
+    width: 210px;
+    height: 210px;
+
+    margin: auto;
+
+    background: #fff;
+
+    border-radius: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #eee;
+}
+
+.qr-placeholder {
+    width: 170px;
+    height: 170px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 5px dashed #aaa;
+
+    font-size: 30px;
+    font-weight: bold;
+
+    color: #777;
+}
+
+.instruction {
+    color: #777;
+    font-size: 14px;
+    margin: 18px 0;
+}
+
+
+/* Buttons */
+
+.payment-button {
+    display: block;
+
+    text-decoration: none;
+
+    color: white;
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.instapay .payment-button {
+    background: #6b2fa0;
+}
+
+.instapay .payment-button:hover {
+    background: #54237f;
+}
+
+.vodafone .payment-button {
+    background: #d40000;
+}
+
+.vodafone .payment-button:hover {
+    background: #a90000;
+}
+
+
+/* Notice */
+
+.notice {
+    background: #fff;
+    margin-top: 25px;
+
+    padding: 18px;
+
+    border-radius: 16px;
+
+    text-align: center;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.notice strong {
+    color: #555;
+}
+
+.notice p {
+    margin-top: 7px;
+    color: #777;
+    font-size: 14px;
+}
+
+
+/* Footer */
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #777;
+}
+
+footer p {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+footer small {
+    font-size: 12px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    .container {
+        padding: 20px 13px;
+    }
+
+    .header h1 {
+        font-size: 28px;
+    }
+
+    .payment-container {
+        grid-template-columns: 1fr;
+    }
+
+    .payment-card {
+        padding: 24px 18px;
+    }
+
+    .qr-box {
+        width: 190px;
+        height: 190px;
+    }
+
+    .qr-placeholder {
+        width: 155px;
+        height: 155px;
+    }
+}
+/* ==========================
+   زر الوضع الليلي
+========================== */
+
+.theme-toggle {
+    position: fixed;
+
+    top: 18px;
+    left: 18px;
+
+    width: 48px;
+    height: 48px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.12);
+
+    z-index: 1000;
+
+    transition: 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.08);
+}
+
+
+/* ==========================
+   الوضع الليلي
+========================== */
+
+body.dark-mode {
+    background: #181818;
+    color: #eeeeee;
+}
+
+body.dark-mode .header h1 {
+    color: #eeeeee;
+}
+
+body.dark-mode .header p {
+    color: #c9c1b5;
+}
+
+body.dark-mode .header span {
+    color: #aaa;
+}
+
+body.dark-mode .payment-card {
+    background: #242424;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+body.dark-mode .payment-card h2 {
+    color: #eeeeee;
+}
+
+body.dark-mode .number {
+    color: #eeeeee;
+}
+
+body.dark-mode .qr-box {
+    background: #ffffff;
+}
+
+body.dark-mode .notice {
+    background: #242424;
+}
+
+body.dark-mode .notice p {
+    color: #aaa;
+}
+
+body.dark-mode footer {
+    color: #aaa;
+}
+
+body.dark-mode .theme-toggle {
+    background: #292929;
+}
+
+body.dark-mode .developer-link {
+    color: #ddd;
+}
+
+body.dark-mode .developer-link:hover {
+    color: #d0b58a;
+}
+.share-section {
+    text-align: center;
+    margin: 25px 0;
+}
+
+.share-button {
+    border: none;
+    background: #555;
+    color: white;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.share-button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+.phone-copy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0 20px;
+    direction: ltr;
+}
+
+.phone-copy span {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.copy-button {
+    border: none;
+    background: #eee;
+    color: #444;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.copy-button:hover {
+    background: #ddd;
+}
+.qr-image {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    cursor: zoom-in;
+    transition: 0.2s;
+}
+
+.qr-image:hover {
+    transform: scale(1.03);
+}
+
+.qr-modal {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.85);
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 5000;
+}
+
+.qr-modal.active {
+    display: flex;
+}
+
+.qr-modal img {
+    width: min(85vw, 450px);
+    height: min(85vw, 450px);
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.close-qr {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+
+    width: 45px;
+    height: 45px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: white;
+    color: #333;
+
+    font-size: 30px;
+    cursor: pointer;
+}
+.download-qr {
+    display: inline-block;
+    margin-top: 12px;
+
+    color: #555;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.download-qr:hover {
+    text-decoration: underline;
+}
+.payment-warning {
+    margin-top: 18px;
+    padding: 14px;
+
+    background: #f7f3e9;
+
+    border-radius: 12px;
+
+    color: #665d4d;
+
+    font-size: 13px;
+}
+
+.payment-warning strong {
+    display: block;
+    margin-bottom: 5px;
+}
+.library-info {
+    text-align: center;
+    margin: 35px 0 20px;
+    padding: 25px;
+
+    background: rgba(255, 255, 255, 0.6);
+
+    border-radius: 18px;
+}
+
+.library-icon {
+    font-size: 35px;
+    margin-bottom: 8px;
+}
+
+.library-info h2 {
+    margin-bottom: 8px;
+}
+body.dark-mode .library-info {
+    background: #242424;
+}
+
+body.dark-mode .payment-warning {
+    background: #302d27;
+    color: #ddd;
+}
+.location-button {
+    display: block;
+
+    max-width: 320px;
+
+    margin: 15px auto;
+
+    padding: 13px;
+
+    background: #555;
+    color: white;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    border-radius: 12px;
+
+    font-weight: bold;
+}
+.whatsapp-button {
+    display: block;
+
+    max-width: 320px;
+
+    margin: 15px auto;
+
+    padding: 13px;
+
+    background: #555;
+
+    color: white;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    border-radius: 12px;
+
+    font-weight: bold;
+}
+@media (max-width: 480px) {
+
+    .container {
+        padding: 18px 12px;
+    }
+
+    .header h1 {
+        font-size: 26px;
+    }
+
+    .payment-card {
+        border-radius: 18px;
+        padding: 22px 15px;
+    }
+
+    .qr-image {
+        width: 165px;
+        height: 165px;
+    }
+
+    .payment-button,
+    .share-button,
+    .location-button,
+    .whatsapp-button {
+        min-height: 48px;
+    }
+
+    .theme-toggle {
+        width: 44px;
+        height: 44px;
+        top: 12px;
+        left: 12px;
+    }
+
+}
+/* ==========================
+   Security Note
+========================== */
+
+.security-note {
+    max-width: 650px;
+    margin: 25px auto;
+
+    padding: 16px 20px;
+
+    background: #f4f4f4;
+    border: 1px solid #dddddd;
+
+    border-radius: 14px;
+
+    text-align: center;
+
+    color: #555;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.security-note strong {
+    display: inline-block;
+
+    margin-bottom: 6px;
+
+    font-size: 16px;
+
+    color: #444;
+}
+
+.security-note p {
+    margin: 5px 0 0;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    color: #777;
+}
+
+
+/* الوضع الليلي */
+
+body.dark-mode .security-note {
+    background: #242424;
+
+    border-color: #3a3a3a;
+
+    color: #ddd;
+
+    box-shadow: none;
+}
+
+body.dark-mode .security-note strong {
+    color: #eee;
+}
+
+body.dark-mode .security-note p {
+    color: #aaa;
+}
+
+
+/* الموبايل */
+
+@media (max-width: 480px) {
+
+    .security-note {
+        margin: 20px 5px;
+        padding: 15px;
+    }
+
+    .security-note p {
+        font-size: 12px;
+    }
+
+}

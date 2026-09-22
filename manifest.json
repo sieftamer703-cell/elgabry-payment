@@ -1,0 +1,11 @@
+{
+    "name": "مكتبة الجبري",
+    "short_name": "الجبري",
+    "description": "صفحة الدفع الإلكتروني لمكتبة الجبري",
+    "start_url": "./",
+    "display": "standalone",
+    "background_color": "#f3eee5",
+    "theme_color": "#555555",
+    "lang": "ar",
+    "dir": "rtl"
+}
