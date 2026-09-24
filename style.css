@@ -4,89 +4,219 @@
     box-sizing: border-box;
 }
 
+:root {
+    --bg: #f3eee5;
+    --surface: rgba(255,255,255,.88);
+    --surface-solid: #fff;
+    --text: #303030;
+    --muted: #777;
+    --line: rgba(80,70,55,.12);
+    --shadow: 0 18px 45px rgba(60,48,35,.11);
+    --accent: #5d5962;
+    --beige: #f7f1e7;
+    --insta: #6b2fa0;
+    --vodafone: #d40000;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: Arial, Tahoma, sans-serif;
-    background: #f3eee5;
-    color: #333;
+    background:
+        radial-gradient(circle at 10% 0%, rgba(255,255,255,.75), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(220,205,180,.28), transparent 28%),
+        var(--bg);
+    color: var(--text);
     min-height: 100vh;
+    overflow-x: hidden;
+    transition: background .35s ease, color .35s ease;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
 }
 
 .container {
+    position: relative;
+    z-index: 2;
     width: 100%;
-    max-width: 1000px;
+    max-width: 1060px;
     margin: auto;
-    padding: 25px 18px;
+    padding: 32px 20px 28px;
+}
+
+.page-glow {
+    position: fixed;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    filter: blur(75px);
+    opacity: .28;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.glow-one {
+    background: #d9c7a7;
+    top: -100px;
+    right: -100px;
+}
+
+.glow-two {
+    background: #c7b5d9;
+    bottom: -120px;
+    left: -120px;
 }
 
 /* Header */
-
 .header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
 }
 
-.book-icon {
-    font-size: 45px;
-    margin-bottom: 8px;
+.brand-mark {
+    width: 68px;
+    height: 68px;
+    margin: 0 auto 12px;
+    display: grid;
+    place-items: center;
+    border-radius: 22px;
+    background: rgba(255,255,255,.78);
+    border: 1px solid rgba(255,255,255,.9);
+    box-shadow: 0 12px 30px rgba(70,55,40,.10);
+    font-size: 34px;
+    transform: rotate(-3deg);
+}
+
+.eyebrow {
+    display: inline-block;
+    margin-bottom: 7px;
+    padding: 6px 13px;
+    border-radius: 999px;
+    background: rgba(85,85,85,.08);
+    color: #69645c;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    direction: ltr;
 }
 
 .header h1 {
-    font-size: 34px;
-    color: #4b4b4b;
-    margin-bottom: 8px;
+    font-size: clamp(30px, 5vw, 42px);
+    color: #45423e;
+    margin-bottom: 6px;
 }
 
 .header p {
     font-size: 22px;
-    font-weight: bold;
+    font-weight: 800;
     color: #756f63;
-    margin-bottom: 8px;
+    margin-bottom: 7px;
 }
 
-.header span {
-    color: #777;
-    font-size: 15px;
+.header > span {
+    color: var(--muted);
+    font-size: 14px;
 }
 
+.quick-note {
+    max-width: 620px;
+    margin: 0 auto 25px;
+    padding: 13px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    text-align: right;
+    background: rgba(255,255,255,.72);
+    border: 1px solid rgba(255,255,255,.85);
+    border-radius: 18px;
+    box-shadow: 0 10px 28px rgba(60,48,35,.07);
+}
+
+.quick-note > span {
+    font-size: 25px;
+}
+
+.quick-note strong,
+.quick-note small {
+    display: block;
+}
+
+.quick-note strong {
+    font-size: 14px;
+    color: #4d4943;
+}
+
+.quick-note small {
+    margin-top: 3px;
+    color: #858078;
+    font-size: 12px;
+}
 
 /* Cards */
-
 .payment-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 22px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
 }
 
 .payment-card {
-    background: #ffffff;
-    border-radius: 22px;
-    padding: 28px 22px;
+    position: relative;
+    overflow: hidden;
+    background: var(--surface);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,.85);
+    border-radius: 26px;
+    padding: 25px 22px 23px;
     text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
 
-    box-shadow:
-        0 10px 30px rgba(0,0,0,0.08);
+.payment-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+}
 
-    transition: transform 0.25s ease;
+.instapay::before {
+    background: linear-gradient(90deg, #54237f, #9a67c1);
+}
+
+.vodafone::before {
+    background: linear-gradient(90deg, #a90000, #ed4444);
 }
 
 .payment-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
+    box-shadow: 0 24px 55px rgba(60,48,35,.15);
+}
+
+.card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 16px;
 }
 
 .payment-logo {
+    min-width: 150px;
+    height: 48px;
+    padding: 0 15px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
-    min-width: 170px;
-    height: 55px;
-
     border-radius: 14px;
-
-    font-size: 22px;
-    font-weight: bold;
-
-    margin-bottom: 18px;
+    font-size: 20px;
+    font-weight: 900;
 }
 
 .instapay .payment-logo {
@@ -99,338 +229,390 @@ body {
     color: #c80000;
 }
 
+.method-badge {
+    padding: 7px 9px;
+    border-radius: 999px;
+    background: #f2f0ec;
+    color: #77716a;
+    font-size: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
 .payment-card h2 {
     font-size: 20px;
-    margin-bottom: 12px;
-}
-
-.number {
-    direction: ltr;
-    font-size: 19px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-}
-
-
-/* QR */
-
-.qr-box {
-    width: 210px;
-    height: 210px;
-
-    margin: auto;
-
-    background: #fff;
-
-    border-radius: 15px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 1px solid #eee;
-}
-
-.qr-placeholder {
-    width: 170px;
-    height: 170px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 5px dashed #aaa;
-
-    font-size: 30px;
-    font-weight: bold;
-
-    color: #777;
-}
-
-.instruction {
-    color: #777;
-    font-size: 14px;
-    margin: 18px 0;
-}
-
-
-/* Buttons */
-
-.payment-button {
-    display: block;
-
-    text-decoration: none;
-
-    color: white;
-
-    padding: 14px;
-
-    border-radius: 12px;
-
-    font-size: 16px;
-    font-weight: bold;
-
-    transition: 0.2s;
-}
-
-.instapay .payment-button {
-    background: #6b2fa0;
-}
-
-.instapay .payment-button:hover {
-    background: #54237f;
-}
-
-.vodafone .payment-button {
-    background: #d40000;
-}
-
-.vodafone .payment-button:hover {
-    background: #a90000;
-}
-
-
-/* Notice */
-
-.notice {
-    background: #fff;
-    margin-top: 25px;
-
-    padding: 18px;
-
-    border-radius: 16px;
-
-    text-align: center;
-
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-}
-
-.notice strong {
-    color: #555;
-}
-
-.notice p {
-    margin-top: 7px;
-    color: #777;
-    font-size: 14px;
-}
-
-
-/* Footer */
-
-footer {
-    text-align: center;
-    margin-top: 30px;
-    color: #777;
-}
-
-footer p {
-    font-weight: bold;
     margin-bottom: 5px;
 }
 
-footer small {
+.card-description {
+    color: #89837b;
     font-size: 12px;
+    margin-bottom: 14px;
 }
 
-
-/* Mobile */
-
-@media (max-width: 700px) {
-
-    .container {
-        padding: 20px 13px;
-    }
-
-    .header h1 {
-        font-size: 28px;
-    }
-
-    .payment-container {
-        grid-template-columns: 1fr;
-    }
-
-    .payment-card {
-        padding: 24px 18px;
-    }
-
-    .qr-box {
-        width: 190px;
-        height: 190px;
-    }
-
-    .qr-placeholder {
-        width: 155px;
-        height: 155px;
-    }
-}
-/* ==========================
-   زر الوضع الليلي
-========================== */
-
-.theme-toggle {
-    position: fixed;
-
-    top: 18px;
-    left: 18px;
-
-    width: 48px;
-    height: 48px;
-
-    border: none;
-    border-radius: 50%;
-
-    background: #ffffff;
-
-    font-size: 22px;
-
-    cursor: pointer;
-
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.12);
-
-    z-index: 1000;
-
-    transition: 0.3s ease;
-}
-
-.theme-toggle:hover {
-    transform: scale(1.08);
-}
-
-
-/* ==========================
-   الوضع الليلي
-========================== */
-
-body.dark-mode {
-    background: #181818;
-    color: #eeeeee;
-}
-
-body.dark-mode .header h1 {
-    color: #eeeeee;
-}
-
-body.dark-mode .header p {
-    color: #c9c1b5;
-}
-
-body.dark-mode .header span {
-    color: #aaa;
-}
-
-body.dark-mode .payment-card {
-    background: #242424;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-}
-
-body.dark-mode .payment-card h2 {
-    color: #eeeeee;
-}
-
-body.dark-mode .number {
-    color: #eeeeee;
-}
-
-body.dark-mode .qr-box {
-    background: #ffffff;
-}
-
-body.dark-mode .notice {
-    background: #242424;
-}
-
-body.dark-mode .notice p {
-    color: #aaa;
-}
-
-body.dark-mode footer {
-    color: #aaa;
-}
-
-body.dark-mode .theme-toggle {
-    background: #292929;
-}
-
-body.dark-mode .developer-link {
-    color: #ddd;
-}
-
-body.dark-mode .developer-link:hover {
-    color: #d0b58a;
-}
-.share-section {
-    text-align: center;
-    margin: 25px 0;
-}
-
-.share-button {
-    border: none;
-    background: #555;
-    color: white;
-    padding: 14px 24px;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.2s ease;
-}
-
-.share-button:hover {
-    transform: translateY(-2px);
-    opacity: 0.9;
-}
-.phone-copy {
-    display: flex;
+.phone-copy,
+.account-copy {
+    direction: ltr;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    margin: 15px 0 20px;
-    direction: ltr;
+    gap: 8px;
+    margin: 5px auto 15px;
+    padding: 8px 9px 8px 12px;
+    border: 1px solid var(--line);
+    background: rgba(248,246,242,.9);
+    border-radius: 12px;
 }
 
-.phone-copy span {
-    font-size: 18px;
-    font-weight: bold;
+.phone-copy span,
+.account-copy span {
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.account-copy span {
+    font-size: 14px;
+    letter-spacing: .3px;
 }
 
 .copy-button {
     border: none;
-    background: #eee;
-    color: #444;
-    padding: 8px 12px;
+    background: #fff;
+    color: #4b4843;
+    padding: 7px 9px;
     border-radius: 8px;
     cursor: pointer;
-    font-weight: bold;
+    font-size: 11px;
+    font-weight: 800;
+    transition: .2s ease;
 }
 
 .copy-button:hover {
-    background: #ddd;
+    transform: translateY(-1px);
+    background: #eae6df;
 }
+
+/* QR */
+.qr-box {
+    width: 232px;
+    height: 232px;
+    margin: 0 auto;
+    padding: 14px;
+    display: grid;
+    place-items: center;
+    background: #fff;
+    border: 1px solid #ece8e1;
+    border-radius: 20px;
+    box-shadow: 0 12px 25px rgba(0,0,0,.08);
+}
+
+.qr-placeholder {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
 .qr-image {
-    width: 180px;
-    height: 180px;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
     cursor: zoom-in;
-    transition: 0.2s;
+    border-radius: 7px;
+    transition: transform .2s ease;
 }
 
 .qr-image:hover {
-    transform: scale(1.03);
+    transform: scale(1.025);
 }
 
-.qr-modal {
-    display: none;
-
-    position: fixed;
-    inset: 0;
-
-    background: rgba(0, 0, 0, 0.85);
-
+.qr-actions {
+    display: flex;
     align-items: center;
     justify-content: center;
+    gap: 9px;
+    margin: 10px 0 15px;
+}
 
+.qr-open-hint,
+.download-qr {
+    border: 1px solid #ddd7cd;
+    background: #fff;
+    color: #55514b;
+    padding: 8px 11px;
+    border-radius: 9px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.qr-open-hint:hover,
+.download-qr:hover {
+    background: #f0ece5;
+    transform: translateY(-1px);
+}
+
+/* Warning */
+.payment-warning {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 0 auto 15px;
+    padding: 12px 13px;
+    background: #f7f3e9;
+    border: 1px solid #e6dcc9;
+    border-radius: 14px;
+    color: #665d4d;
+    text-align: right;
+}
+
+.warning-icon {
+    font-size: 21px;
+    line-height: 1;
+}
+
+.payment-warning strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 13px;
+}
+
+.payment-warning p {
+    margin: 0;
+    font-size: 11px;
+    line-height: 1.65;
+}
+
+/* Main buttons */
+.payment-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    padding: 13px 15px;
+    border-radius: 14px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 900;
+    box-shadow: 0 8px 18px rgba(0,0,0,.10);
+    transition: transform .2s ease, filter .2s ease;
+}
+
+.payment-button:hover {
+    transform: translateY(-2px);
+    filter: brightness(.95);
+}
+
+.instapay .payment-button {
+    background: linear-gradient(135deg, #6b2fa0, #54237f);
+}
+
+.vodafone .payment-button {
+    background: linear-gradient(135deg, #e00000, #a90000);
+}
+
+/* Share / notice */
+.share-section {
+    text-align: center;
+    margin: 25px 0 16px;
+}
+
+.share-button {
+    border: 1px solid #65615b;
+    background: #55514c;
+    color: #fff;
+    padding: 13px 22px;
+    border-radius: 13px;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(0,0,0,.10);
+    transition: .2s ease;
+}
+
+.share-button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.06);
+}
+
+.notice,
+.security-note {
+    max-width: 760px;
+    margin: 14px auto;
+    padding: 15px 18px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    border-radius: 17px;
+    box-shadow: 0 8px 25px rgba(60,48,35,.06);
+}
+
+.notice {
+    background: rgba(255,255,255,.78);
+    border: 1px solid rgba(255,255,255,.85);
+}
+
+.security-note {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+}
+
+.notice-icon,
+.security-icon {
+    font-size: 25px;
+}
+
+.notice strong,
+.security-note strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+.notice p,
+.security-note p {
+    color: #777;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+/* Library info */
+.library-info {
+    max-width: 760px;
+    margin: 25px auto 15px;
+    padding: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    text-align: right;
+    background: linear-gradient(135deg, rgba(255,255,255,.9), rgba(247,241,231,.92));
+    border: 1px solid rgba(255,255,255,.9);
+    border-radius: 20px;
+    box-shadow: 0 10px 28px rgba(60,48,35,.07);
+}
+
+.library-icon {
+    width: 54px;
+    height: 54px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    border-radius: 16px;
+    background: #eee8dc;
+    font-size: 28px;
+}
+
+.library-info h2 {
+    margin-bottom: 5px;
+    font-size: 21px;
+}
+
+.library-info p {
+    color: #777;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.contact-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 320px));
+    justify-content: center;
+    gap: 12px;
+    margin: 15px auto 8px;
+}
+
+.location-button,
+.whatsapp-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 12px 15px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 13px;
+    font-weight: 800;
+    transition: .2s ease;
+}
+
+.location-button {
+    background: #555;
+}
+
+.whatsapp-button {
+    background: #555;
+}
+
+.location-button:hover,
+.whatsapp-button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 28px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    color: #777;
+}
+
+footer p {
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+footer small {
+    font-size: 11px;
+}
+
+.developer-link {
+    color: #555;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.developer-link:hover {
+    color: #8b7355;
+    text-decoration: underline;
+}
+
+/* Theme */
+.theme-toggle {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    width: 46px;
+    height: 46px;
+    border: 1px solid rgba(255,255,255,.8);
+    border-radius: 50%;
+    background: rgba(255,255,255,.86);
+    font-size: 21px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0,0,0,.12);
+    z-index: 1000;
+    transition: .25s ease;
+}
+
+.theme-toggle:hover {
+    transform: rotate(12deg) scale(1.07);
+}
+
+/* QR modal */
+.qr-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    padding: 20px;
+    background: rgba(10,10,10,.88);
+    align-items: center;
+    justify-content: center;
     z-index: 5000;
 }
 
@@ -439,236 +621,1018 @@ body.dark-mode .developer-link:hover {
 }
 
 .qr-modal img {
-    width: min(85vw, 450px);
-    height: min(85vw, 450px);
-    background: white;
-    padding: 15px;
-    border-radius: 15px;
+    width: min(88vw, 500px);
+    height: min(88vw, 500px);
+    padding: 14px;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 25px 80px rgba(0,0,0,.45);
 }
 
 .close-qr {
     position: absolute;
-    top: 20px;
-    right: 25px;
-
-    width: 45px;
-    height: 45px;
-
+    top: 18px;
+    right: 20px;
+    width: 46px;
+    height: 46px;
     border: none;
     border-radius: 50%;
-
-    background: white;
+    background: #fff;
     color: #333;
-
     font-size: 30px;
     cursor: pointer;
 }
-.download-qr {
-    display: inline-block;
-    margin-top: 12px;
 
-    color: #555;
-    text-decoration: none;
-
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.download-qr:hover {
-    text-decoration: underline;
-}
-.payment-warning {
-    margin-top: 18px;
-    padding: 14px;
-
-    background: #f7f3e9;
-
-    border-radius: 12px;
-
-    color: #665d4d;
-
-    font-size: 13px;
-}
-
-.payment-warning strong {
-    display: block;
-    margin-bottom: 5px;
-}
-.library-info {
-    text-align: center;
-    margin: 35px 0 20px;
-    padding: 25px;
-
-    background: rgba(255, 255, 255, 0.6);
-
-    border-radius: 18px;
-}
-
-.library-icon {
-    font-size: 35px;
-    margin-bottom: 8px;
-}
-
-.library-info h2 {
-    margin-bottom: 8px;
-}
-body.dark-mode .library-info {
-    background: #242424;
-}
-
-body.dark-mode .payment-warning {
-    background: #302d27;
-    color: #ddd;
-}
-.location-button {
-    display: block;
-
-    max-width: 320px;
-
-    margin: 15px auto;
-
-    padding: 13px;
-
-    background: #555;
-    color: white;
-
-    text-align: center;
-
-    text-decoration: none;
-
-    border-radius: 12px;
-
-    font-weight: bold;
-}
-.whatsapp-button {
-    display: block;
-
-    max-width: 320px;
-
-    margin: 15px auto;
-
-    padding: 13px;
-
-    background: #555;
-
-    color: white;
-
-    text-align: center;
-
-    text-decoration: none;
-
-    border-radius: 12px;
-
-    font-weight: bold;
-}
-@media (max-width: 480px) {
-
-    .container {
-        padding: 18px 12px;
-    }
-
-    .header h1 {
-        font-size: 26px;
-    }
-
-    .payment-card {
-        border-radius: 18px;
-        padding: 22px 15px;
-    }
-
-    .qr-image {
-        width: 165px;
-        height: 165px;
-    }
-
-    .payment-button,
-    .share-button,
-    .location-button,
-    .whatsapp-button {
-        min-height: 48px;
-    }
-
-    .theme-toggle {
-        width: 44px;
-        height: 44px;
-        top: 12px;
-        left: 12px;
-    }
-
-}
-/* ==========================
-   Security Note
-========================== */
-
-.security-note {
-    max-width: 650px;
-    margin: 25px auto;
-
-    padding: 16px 20px;
-
-    background: #f4f4f4;
-    border: 1px solid #dddddd;
-
-    border-radius: 14px;
-
-    text-align: center;
-
-    color: #555;
-
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-}
-
-.security-note strong {
-    display: inline-block;
-
-    margin-bottom: 6px;
-
-    font-size: 16px;
-
-    color: #444;
-}
-
-.security-note p {
-    margin: 5px 0 0;
-
-    font-size: 13px;
-
-    line-height: 1.7;
-
-    color: #777;
-}
-
-
-/* الوضع الليلي */
-
-body.dark-mode .security-note {
-    background: #242424;
-
-    border-color: #3a3a3a;
-
-    color: #ddd;
-
-    box-shadow: none;
-}
-
-body.dark-mode .security-note strong {
+/* Dark mode */
+body.dark-mode {
+    --surface: rgba(36,36,36,.92);
+    --text: #eee;
+    --muted: #aaa;
+    --line: rgba(255,255,255,.08);
+    --shadow: 0 18px 50px rgba(0,0,0,.30);
+    background:
+        radial-gradient(circle at 10% 0%, rgba(90,80,65,.18), transparent 30%),
+        #181818;
     color: #eee;
 }
 
+body.dark-mode .brand-mark,
+body.dark-mode .quick-note,
+body.dark-mode .notice {
+    background: rgba(39,39,39,.88);
+    border-color: #333;
+}
+
+body.dark-mode .header h1,
+body.dark-mode .quick-note strong,
+body.dark-mode .library-info h2 {
+    color: #eee;
+}
+
+body.dark-mode .header p {
+    color: #c9c1b5;
+}
+
+body.dark-mode .header > span,
+body.dark-mode .quick-note small,
+body.dark-mode .card-description,
+body.dark-mode .library-info p,
+body.dark-mode .notice p,
 body.dark-mode .security-note p {
     color: #aaa;
 }
 
+body.dark-mode .eyebrow,
+body.dark-mode .method-badge {
+    background: #303030;
+    color: #bbb;
+}
 
-/* الموبايل */
+body.dark-mode .payment-card {
+    background: rgba(36,36,36,.92);
+    border-color: #333;
+}
 
-@media (max-width: 480px) {
+body.dark-mode .phone-copy,
+body.dark-mode .account-copy {
+    background: #2b2b2b;
+    border-color: #414141;
+}
 
-    .security-note {
-        margin: 20px 5px;
-        padding: 15px;
+body.dark-mode .copy-button,
+body.dark-mode .qr-open-hint,
+body.dark-mode .download-qr {
+    background: #343434;
+    border-color: #484848;
+    color: #eee;
+}
+
+body.dark-mode .copy-button:hover,
+body.dark-mode .qr-open-hint:hover,
+body.dark-mode .download-qr:hover {
+    background: #414141;
+}
+
+body.dark-mode .payment-warning {
+    background: #302d27;
+    border-color: #4a453c;
+    color: #ddd;
+}
+
+body.dark-mode .security-note {
+    background: #242424;
+    border-color: #3a3a3a;
+    box-shadow: none;
+}
+
+body.dark-mode .library-info {
+    background: linear-gradient(135deg, #242424, #2d2a26);
+    border-color: #3a3a3a;
+}
+
+body.dark-mode .library-icon {
+    background: #35322d;
+}
+
+body.dark-mode .theme-toggle {
+    background: #292929;
+    border-color: #444;
+}
+
+body.dark-mode footer {
+    color: #aaa;
+}
+
+/* Responsive */
+@media (max-width: 760px) {
+    .payment-container {
+        grid-template-columns: 1fr;
     }
 
+    .payment-card {
+        max-width: 620px;
+        width: 100%;
+        margin: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 24px 12px 20px;
+    }
+
+    .theme-toggle {
+        width: 43px;
+        height: 43px;
+        top: 11px;
+        left: 11px;
+    }
+
+    .header {
+        margin-bottom: 19px;
+    }
+
+    .brand-mark {
+        width: 58px;
+        height: 58px;
+        font-size: 29px;
+    }
+
+    .header h1 {
+        font-size: 28px;
+    }
+
+    .header p {
+        font-size: 19px;
+    }
+
+    .quick-note {
+        padding: 11px 13px;
+        text-align: right;
+    }
+
+    .payment-card {
+        border-radius: 21px;
+        padding: 22px 14px;
+    }
+
+    .card-top {
+        align-items: flex-start;
+    }
+
+    .payment-logo {
+        min-width: 135px;
+        height: 45px;
+        font-size: 18px;
+    }
+
+    .method-badge {
+        font-size: 9px;
+    }
+
+    .qr-box {
+        width: 205px;
+        height: 205px;
+        padding: 12px;
+    }
+
+    .phone-copy,
+    .account-copy {
+        max-width: 100%;
+    }
+
+    .phone-copy span {
+        font-size: 15px;
+    }
+
+    .contact-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .library-info {
+        align-items: flex-start;
+        padding: 18px;
+    }
+
+    .security-note,
+    .notice {
+        align-items: flex-start;
+        padding: 14px;
+    }
+}
+/* ===== Social Media ===== */
+
+.social-section {
+  margin-top: 24px;
+  padding: 24px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.social-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.social-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  background: linear-gradient(135deg, #777, #333);
+  color: white;
+  flex-shrink: 0;
+}
+
+.social-heading h2 {
+  margin: 0 0 5px;
+  font-size: 21px;
+}
+
+.social-heading p {
+  margin: 0;
+  font-size: 13px;
+  color: #777;
+}
+
+.social-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.social-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: #333;
+  background: #f8f8f8;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: 0.25s ease;
+}
+
+.social-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.social-card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 23px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.social-card strong {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 3px;
+}
+
+.social-card small {
+  display: block;
+  font-size: 11px;
+  color: #888;
+}
+
+.social-arrow {
+  margin-right: auto;
+  font-size: 18px;
+  color: #888;
+}
+
+/* Facebook */
+.social-card.facebook .social-card-icon {
+  background: #1877f2;
+}
+
+/* Instagram */
+.social-card.instagram .social-card-icon {
+  background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+}
+
+/* TikTok */
+.social-card.tiktok .social-card-icon {
+  background: #111;
+}
+
+/* Dark Mode */
+body.dark-mode .social-section {
+  background: rgba(30, 30, 30, 0.9);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .social-card {
+  background: #252525;
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+body.dark-mode .social-heading p,
+body.dark-mode .social-card small {
+  color: #aaa;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .social-links {
+    grid-template-columns: 1fr;
+  }
+
+  .social-section {
+    padding: 18px;
+  }
+}
+/* ===== Floating WhatsApp ===== */
+
+.floating-whatsapp {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 50px;
+  background: #25d366;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  transition: 0.25s ease;
+}
+
+.floating-whatsapp span {
+  font-size: 21px;
+}
+
+.floating-whatsapp:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 600px) {
+  .floating-whatsapp {
+    left: 14px;
+    bottom: 14px;
+    padding: 12px;
+  }
+
+  .floating-whatsapp strong {
+    display: none;
+  }
+}
+/* ===== Why Pay Section ===== */
+
+.why-pay {
+  margin-top: 24px;
+  padding: 24px;
+  border-radius: 22px;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.95),
+    rgba(246,242,235,0.95)
+  );
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.why-pay-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.why-pay-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  background: linear-gradient(135deg, #777, #333);
+}
+
+.why-pay-heading h2 {
+  margin: 0 0 5px;
+  font-size: 21px;
+}
+
+.why-pay-heading p {
+  margin: 0;
+  color: #777;
+  font-size: 13px;
+}
+
+.why-pay-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.why-pay-card {
+  padding: 20px 15px;
+  text-align: center;
+  border-radius: 17px;
+  background: rgba(255,255,255,0.8);
+  border: 1px solid rgba(0,0,0,0.06);
+  transition: 0.25s ease;
+}
+
+.why-pay-card:hover {
+  transform: translateY(-3px);
+}
+
+.why-icon {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.why-pay-card h3 {
+  margin: 0 0 7px;
+  font-size: 16px;
+}
+
+.why-pay-card p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #777;
+}
+
+/* Dark Mode */
+
+body.dark-mode .why-pay {
+  background: rgba(30,30,30,0.9);
+  border-color: rgba(255,255,255,0.08);
+}
+
+body.dark-mode .why-pay-card {
+  background: #252525;
+  border-color: rgba(255,255,255,0.08);
+}
+
+body.dark-mode .why-pay-heading p,
+body.dark-mode .why-pay-card p {
+  color: #aaa;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+  .why-pay {
+    padding: 18px;
+  }
+
+  .why-pay-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* ========================================
+   📱 MOBILE RESPONSIVE - ELGABRY PAYMENT
+   ======================================== */
+
+@media (max-width: 700px) {
+
+  /* الصفحة */
+  body {
+    overflow-x: hidden;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 12px;
+    box-sizing: border-box;
+  }
+
+  /* الهيدر */
+  header {
+    padding: 20px 14px;
+    margin-bottom: 16px;
+  }
+
+  header h1 {
+    font-size: 25px;
+    line-height: 1.3;
+  }
+
+  header p {
+    font-size: 13px;
+  }
+
+  /* كروت الدفع */
+  .payment-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+
+  .payment-card {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 18px 14px;
+    border-radius: 18px;
+  }
+
+  /* عنوان طريقة الدفع */
+  .payment-card h2 {
+    font-size: 19px;
+  }
+
+  /* منطقة QR */
+  .qr-box {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px;
+    margin-top: 12px;
+  }
+
+  .qr-frame {
+    width: min(72vw, 230px);
+    height: min(72vw, 230px);
+    margin: 12px auto;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .qr-image {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  .qr-title {
+    font-size: 16px;
+  }
+
+  .qr-hint {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  /* أزرار QR */
+  .qr-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .qr-actions button,
+  .qr-actions a {
+    min-height: 44px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 12px;
+  }
+
+  /* أزرار الدفع */
+  .payment-card button,
+  .payment-card a {
+    min-height: 44px;
+  }
+
+  /* قسم ليه تدفع من هنا */
+  .why-pay {
+    padding: 17px 13px;
+    border-radius: 18px;
+  }
+
+  .why-pay-heading {
+    gap: 10px;
+  }
+
+  .why-pay-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 21px;
+  }
+
+  .why-pay-heading h2 {
+    font-size: 18px;
+  }
+
+  .why-pay-heading p {
+    font-size: 11px;
+  }
+
+  .why-pay-grid {
+    grid-template-columns: 1fr !important;
+    gap: 9px;
+  }
+
+  .why-pay-card {
+    display: flex;
+    align-items: center;
+    text-align: right;
+    gap: 12px;
+    padding: 13px;
+  }
+
+  .why-icon {
+    margin: 0;
+    font-size: 25px;
+    flex-shrink: 0;
+  }
+
+  .why-pay-card h3 {
+    margin-bottom: 3px;
+    font-size: 15px;
+  }
+
+  .why-pay-card p {
+    font-size: 11px;
+    line-height: 1.6;
+  }
+
+  /* السوشيال ميديا */
+  .social-section {
+    padding: 17px 13px;
+    border-radius: 18px;
+  }
+
+  .social-heading {
+    gap: 10px;
+  }
+
+  .social-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 21px;
+  }
+
+  .social-heading h2 {
+    font-size: 18px;
+  }
+
+  .social-heading p {
+    font-size: 11px;
+  }
+
+  .social-links {
+    grid-template-columns: 1fr !important;
+    gap: 9px;
+  }
+
+  .social-card {
+    min-height: 62px;
+    box-sizing: border-box;
+    padding: 10px 12px;
+  }
+
+  .social-card-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* معلومات المكتبة */
+  .library-info {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px 13px;
+  }
+
+  /* أزرار الموقع والواتساب */
+  .location-button,
+  .whatsapp-button {
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 46px;
+  }
+
+  /* الملاحظة */
+  .notice,
+  .security-note,
+  .payment-warning {
+    padding: 13px;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  /* الفوتر */
+  footer {
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 12px;
+  }
+
+  /* زر واتساب العائم */
+  .floating-whatsapp {
+    left: 12px;
+    bottom: 12px;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border-radius: 50%;
+    justify-content: center;
+  }
+
+  .floating-whatsapp span {
+    font-size: 21px;
+  }
+
+  .floating-whatsapp strong {
+    display: none;
+  }
+
+  /* زر الوضع الليلي */
+  .theme-toggle {
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+  }
+
+}
+
+
+/* ========================================
+   📱 SMALL PHONES
+   ======================================== */
+
+@media (max-width: 380px) {
+
+  .container {
+    padding: 0 9px;
+  }
+
+  header h1 {
+    font-size: 22px;
+  }
+
+  .payment-card {
+    padding: 14px 11px;
+  }
+
+  .qr-frame {
+    width: 68vw;
+    height: 68vw;
+    max-width: 210px;
+    max-height: 210px;
+  }
+
+  .qr-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .social-card {
+    padding: 9px;
+  }
+
+}
+/* ========================================
+   ELGABRY HEADER
+   ======================================== */
+
+.main-header {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 22px;
+  padding: 24px;
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,.9), transparent 35%),
+    linear-gradient(135deg, #f8f3e9, #e9e1d4);
+  border: 1px solid rgba(0,0,0,.06);
+  box-shadow: 0 12px 35px rgba(0,0,0,.08);
+}
+
+.brand-area {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.logo-wrapper {
+  width: 82px;
+  height: 82px;
+  padding: 7px;
+  flex-shrink: 0;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(0,0,0,.12);
+  box-sizing: border-box;
+}
+
+.logo-wrapper img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  border-radius: 16px;
+}
+
+.brand-mini {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #777;
+  margin-bottom: 4px;
+}
+
+.brand-text h1 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.25;
+}
+
+.brand-text p {
+  margin: 5px 0 0;
+  color: #777;
+  font-size: 14px;
+}
+
+.header-subtitle {
+  margin-top: 17px;
+  display: inline-flex;
+  padding: 8px 14px;
+  border-radius: 50px;
+  background: rgba(255,255,255,.75);
+  color: #555;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* ========================================
+   DARK MODE
+   ======================================== */
+
+body.dark-mode .main-header {
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,.08), transparent 35%),
+    linear-gradient(135deg, #242424, #171717);
+  border-color: rgba(255,255,255,.08);
+}
+
+body.dark-mode .logo-wrapper {
+  background: #fff;
+}
+
+body.dark-mode .brand-text p,
+body.dark-mode .brand-mini {
+  color: #aaa;
+}
+
+body.dark-mode .header-subtitle {
+  background: rgba(255,255,255,.08);
+  color: #ddd;
+}
+
+
+/* ========================================
+   MOBILE HEADER
+   ======================================== */
+
+@media (max-width: 700px) {
+
+  .main-header {
+    padding: 18px 15px;
+    border-radius: 21px;
+  }
+
+  .brand-area {
+    gap: 13px;
+  }
+
+  .logo-wrapper {
+    width: 64px;
+    height: 64px;
+    padding: 5px;
+    border-radius: 17px;
+  }
+
+  .logo-wrapper img {
+    border-radius: 12px;
+  }
+
+  .brand-mini {
+    font-size: 8px;
+    letter-spacing: 1.5px;
+  }
+
+  .brand-text h1 {
+    font-size: 23px;
+  }
+
+  .brand-text p {
+    font-size: 12px;
+    margin-top: 3px;
+  }
+
+  .header-subtitle {
+    margin-top: 13px;
+    padding: 7px 12px;
+    font-size: 11px;
+  }
+
+}
+/* ========================================
+   QR PREMIUM DESIGN
+   ======================================== */
+
+.qr-box {
+  position: relative;
+}
+
+.qr-frame {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 14px auto;
+  padding: 12px;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.10),
+    inset 0 0 0 1px rgba(0,0,0,.06);
+  box-sizing: border-box;
+}
+
+.qr-frame::before {
+  content: "SCAN";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: #333;
+  color: #fff;
+  font-size: 8px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.qr-frame .qr-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  cursor: pointer;
+}
+
+.qr-frame .qr-image:hover {
+  transform: scale(1.02);
+}
+
+.qr-hint {
+  max-width: 330px;
+  margin: 0 auto;
+}
+
+
+/* Mobile QR */
+
+@media (max-width: 700px) {
+
+  .qr-frame {
+    width: min(68vw, 230px);
+    height: min(68vw, 230px);
+    padding: 10px;
+    border-radius: 19px;
+  }
+
+}
     .security-note p {
         font-size: 12px;
     }
