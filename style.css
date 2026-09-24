@@ -1,1427 +1,175 @@
+/* =========================================================
+   ELGABRY PAYMENT — CLEAN MASTER CSS
+   ملف CSS كامل ومنظم لصفحة الدفع الخاصة بمكتبة الجبري
+   ========================================================= */
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
-    --bg: #f3eee5;
-    --surface: rgba(255,255,255,.88);
-    --surface-solid: #fff;
-    --text: #303030;
-    --muted: #777;
-    --line: rgba(80,70,55,.12);
-    --shadow: 0 18px 45px rgba(60,48,35,.11);
-    --accent: #5d5962;
-    --beige: #f7f1e7;
-    --insta: #6b2fa0;
-    --vodafone: #d40000;
+  --bg: #f3eee5;
+  --surface: rgba(255, 255, 255, 0.90);
+  --surface-solid: #ffffff;
+  --surface-soft: #f8f4ec;
+  --text: #303030;
+  --muted: #77716a;
+  --line: rgba(70, 60, 45, 0.12);
+  --accent: #555555;
+  --beige: #f7f1e7;
+  --insta: #6b2fa0;
+  --insta-dark: #54237f;
+  --vodafone: #d40000;
+  --vodafone-dark: #a90000;
+  --whatsapp: #25d366;
+  --shadow: 0 18px 45px rgba(60, 48, 35, 0.11);
+  --shadow-soft: 0 10px 28px rgba(60, 48, 35, 0.07);
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: Arial, Tahoma, sans-serif;
-    background:
-        radial-gradient(circle at 10% 0%, rgba(255,255,255,.75), transparent 30%),
-        radial-gradient(circle at 90% 20%, rgba(220,205,180,.28), transparent 28%),
-        var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
-    transition: background .35s ease, color .35s ease;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: Arial, Tahoma, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(255,255,255,.75), transparent 30%),
+    radial-gradient(circle at 90% 20%, rgba(220,205,180,.28), transparent 28%),
+    var(--bg);
+  transition: background .3s ease, color .3s ease;
 }
 
-button,
-a {
-    -webkit-tap-highlight-color: transparent;
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
 }
 
-.container {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    max-width: 1060px;
-    margin: auto;
-    padding: 32px 20px 28px;
+button {
+  font-family: inherit;
 }
+
+img {
+  max-width: 100%;
+}
+
+/* =========================================================
+   PAGE BACKGROUND
+   ========================================================= */
 
 .page-glow {
-    position: fixed;
-    width: 280px;
-    height: 280px;
-    border-radius: 50%;
-    filter: blur(75px);
-    opacity: .28;
-    pointer-events: none;
-    z-index: 0;
+  position: fixed;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  filter: blur(75px);
+  opacity: .25;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .glow-one {
-    background: #d9c7a7;
-    top: -100px;
-    right: -100px;
+  top: -100px;
+  right: -100px;
+  background: #d9c7a7;
 }
 
 .glow-two {
-    background: #c7b5d9;
-    bottom: -120px;
-    left: -120px;
+  left: -120px;
+  bottom: -120px;
+  background: #c7b5d9;
 }
 
-/* Header */
-.header {
-    text-align: center;
-    margin-bottom: 24px;
+.container {
+  position: relative;
+  z-index: 2;
+  width: min(1060px, 100%);
+  margin: 0 auto;
+  padding: 30px 20px 28px;
 }
 
-.brand-mark {
-    width: 68px;
-    height: 68px;
-    margin: 0 auto 12px;
-    display: grid;
-    place-items: center;
-    border-radius: 22px;
-    background: rgba(255,255,255,.78);
-    border: 1px solid rgba(255,255,255,.9);
-    box-shadow: 0 12px 30px rgba(70,55,40,.10);
-    font-size: 34px;
-    transform: rotate(-3deg);
-}
-
-.eyebrow {
-    display: inline-block;
-    margin-bottom: 7px;
-    padding: 6px 13px;
-    border-radius: 999px;
-    background: rgba(85,85,85,.08);
-    color: #69645c;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    direction: ltr;
-}
-
-.header h1 {
-    font-size: clamp(30px, 5vw, 42px);
-    color: #45423e;
-    margin-bottom: 6px;
-}
-
-.header p {
-    font-size: 22px;
-    font-weight: 800;
-    color: #756f63;
-    margin-bottom: 7px;
-}
-
-.header > span {
-    color: var(--muted);
-    font-size: 14px;
-}
-
-.quick-note {
-    max-width: 620px;
-    margin: 0 auto 25px;
-    padding: 13px 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 11px;
-    text-align: right;
-    background: rgba(255,255,255,.72);
-    border: 1px solid rgba(255,255,255,.85);
-    border-radius: 18px;
-    box-shadow: 0 10px 28px rgba(60,48,35,.07);
-}
-
-.quick-note > span {
-    font-size: 25px;
-}
-
-.quick-note strong,
-.quick-note small {
-    display: block;
-}
-
-.quick-note strong {
-    font-size: 14px;
-    color: #4d4943;
-}
-
-.quick-note small {
-    margin-top: 3px;
-    color: #858078;
-    font-size: 12px;
-}
-
-/* Cards */
-.payment-container {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
-}
-
-.payment-card {
-    position: relative;
-    overflow: hidden;
-    background: var(--surface);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,.85);
-    border-radius: 26px;
-    padding: 25px 22px 23px;
-    text-align: center;
-    box-shadow: var(--shadow);
-    transition: transform .25s ease, box-shadow .25s ease;
-}
-
-.payment-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 5px;
-}
-
-.instapay::before {
-    background: linear-gradient(90deg, #54237f, #9a67c1);
-}
-
-.vodafone::before {
-    background: linear-gradient(90deg, #a90000, #ed4444);
-}
-
-.payment-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 24px 55px rgba(60,48,35,.15);
-}
-
-.card-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 16px;
-}
-
-.payment-logo {
-    min-width: 150px;
-    height: 48px;
-    padding: 0 15px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 14px;
-    font-size: 20px;
-    font-weight: 900;
-}
-
-.instapay .payment-logo {
-    background: #eee6f8;
-    color: #6b2fa0;
-}
-
-.vodafone .payment-logo {
-    background: #fbe8e8;
-    color: #c80000;
-}
-
-.method-badge {
-    padding: 7px 9px;
-    border-radius: 999px;
-    background: #f2f0ec;
-    color: #77716a;
-    font-size: 10px;
-    font-weight: 700;
-    white-space: nowrap;
-}
-
-.payment-card h2 {
-    font-size: 20px;
-    margin-bottom: 5px;
-}
-
-.card-description {
-    color: #89837b;
-    font-size: 12px;
-    margin-bottom: 14px;
-}
-
-.phone-copy,
-.account-copy {
-    direction: ltr;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin: 5px auto 15px;
-    padding: 8px 9px 8px 12px;
-    border: 1px solid var(--line);
-    background: rgba(248,246,242,.9);
-    border-radius: 12px;
-}
-
-.phone-copy span,
-.account-copy span {
-    font-size: 16px;
-    font-weight: 800;
-}
-
-.account-copy span {
-    font-size: 14px;
-    letter-spacing: .3px;
-}
-
-.copy-button {
-    border: none;
-    background: #fff;
-    color: #4b4843;
-    padding: 7px 9px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 11px;
-    font-weight: 800;
-    transition: .2s ease;
-}
-
-.copy-button:hover {
-    transform: translateY(-1px);
-    background: #eae6df;
-}
-
-/* QR */
-.qr-box {
-    width: 232px;
-    height: 232px;
-    margin: 0 auto;
-    padding: 14px;
-    display: grid;
-    place-items: center;
-    background: #fff;
-    border: 1px solid #ece8e1;
-    border-radius: 20px;
-    box-shadow: 0 12px 25px rgba(0,0,0,.08);
-}
-
-.qr-placeholder {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    place-items: center;
-}
-
-.qr-image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    cursor: zoom-in;
-    border-radius: 7px;
-    transition: transform .2s ease;
-}
-
-.qr-image:hover {
-    transform: scale(1.025);
-}
-
-.qr-actions {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
-    margin: 10px 0 15px;
-}
-
-.qr-open-hint,
-.download-qr {
-    border: 1px solid #ddd7cd;
-    background: #fff;
-    color: #55514b;
-    padding: 8px 11px;
-    border-radius: 9px;
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 800;
-    cursor: pointer;
-    transition: .2s ease;
-}
-
-.qr-open-hint:hover,
-.download-qr:hover {
-    background: #f0ece5;
-    transform: translateY(-1px);
-}
-
-/* Warning */
-.payment-warning {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    margin: 0 auto 15px;
-    padding: 12px 13px;
-    background: #f7f3e9;
-    border: 1px solid #e6dcc9;
-    border-radius: 14px;
-    color: #665d4d;
-    text-align: right;
-}
-
-.warning-icon {
-    font-size: 21px;
-    line-height: 1;
-}
-
-.payment-warning strong {
-    display: block;
-    margin-bottom: 4px;
-    font-size: 13px;
-}
-
-.payment-warning p {
-    margin: 0;
-    font-size: 11px;
-    line-height: 1.65;
-}
-
-/* Main buttons */
-.payment-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 50px;
-    padding: 13px 15px;
-    border-radius: 14px;
-    color: #fff;
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 900;
-    box-shadow: 0 8px 18px rgba(0,0,0,.10);
-    transition: transform .2s ease, filter .2s ease;
-}
-
-.payment-button:hover {
-    transform: translateY(-2px);
-    filter: brightness(.95);
-}
-
-.instapay .payment-button {
-    background: linear-gradient(135deg, #6b2fa0, #54237f);
-}
-
-.vodafone .payment-button {
-    background: linear-gradient(135deg, #e00000, #a90000);
-}
-
-/* Share / notice */
-.share-section {
-    text-align: center;
-    margin: 25px 0 16px;
-}
-
-.share-button {
-    border: 1px solid #65615b;
-    background: #55514c;
-    color: #fff;
-    padding: 13px 22px;
-    border-radius: 13px;
-    font-size: 14px;
-    font-weight: 800;
-    cursor: pointer;
-    box-shadow: 0 8px 18px rgba(0,0,0,.10);
-    transition: .2s ease;
-}
-
-.share-button:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.06);
-}
-
-.notice,
-.security-note {
-    max-width: 760px;
-    margin: 14px auto;
-    padding: 15px 18px;
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    border-radius: 17px;
-    box-shadow: 0 8px 25px rgba(60,48,35,.06);
-}
-
-.notice {
-    background: rgba(255,255,255,.78);
-    border: 1px solid rgba(255,255,255,.85);
-}
-
-.security-note {
-    background: #f4f4f4;
-    border: 1px solid #ddd;
-}
-
-.notice-icon,
-.security-icon {
-    font-size: 25px;
-}
-
-.notice strong,
-.security-note strong {
-    display: block;
-    margin-bottom: 4px;
-    font-size: 14px;
-}
-
-.notice p,
-.security-note p {
-    color: #777;
-    font-size: 12px;
-    line-height: 1.7;
-}
-
-/* Library info */
-.library-info {
-    max-width: 760px;
-    margin: 25px auto 15px;
-    padding: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    text-align: right;
-    background: linear-gradient(135deg, rgba(255,255,255,.9), rgba(247,241,231,.92));
-    border: 1px solid rgba(255,255,255,.9);
-    border-radius: 20px;
-    box-shadow: 0 10px 28px rgba(60,48,35,.07);
-}
-
-.library-icon {
-    width: 54px;
-    height: 54px;
-    display: grid;
-    place-items: center;
-    flex: 0 0 auto;
-    border-radius: 16px;
-    background: #eee8dc;
-    font-size: 28px;
-}
-
-.library-info h2 {
-    margin-bottom: 5px;
-    font-size: 21px;
-}
-
-.library-info p {
-    color: #777;
-    font-size: 12px;
-    line-height: 1.8;
-}
-
-.contact-actions {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 320px));
-    justify-content: center;
-    gap: 12px;
-    margin: 15px auto 8px;
-}
-
-.location-button,
-.whatsapp-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 48px;
-    padding: 12px 15px;
-    color: #fff;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 13px;
-    font-weight: 800;
-    transition: .2s ease;
-}
-
-.location-button {
-    background: #555;
-}
-
-.whatsapp-button {
-    background: #555;
-}
-
-.location-button:hover,
-.whatsapp-button:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.08);
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    margin-top: 28px;
-    padding-top: 18px;
-    border-top: 1px solid var(--line);
-    color: #777;
-}
-
-footer p {
-    font-weight: 800;
-    margin-bottom: 5px;
-}
-
-footer small {
-    font-size: 11px;
-}
-
-.developer-link {
-    color: #555;
-    font-weight: 900;
-    text-decoration: none;
-}
-
-.developer-link:hover {
-    color: #8b7355;
-    text-decoration: underline;
-}
+/* =========================================================
+   THEME TOGGLE
+   ========================================================= */
 
-/* Theme */
 .theme-toggle {
-    position: fixed;
-    top: 16px;
-    left: 16px;
-    width: 46px;
-    height: 46px;
-    border: 1px solid rgba(255,255,255,.8);
-    border-radius: 50%;
-    background: rgba(255,255,255,.86);
-    font-size: 21px;
-    cursor: pointer;
-    box-shadow: 0 8px 25px rgba(0,0,0,.12);
-    z-index: 1000;
-    transition: .25s ease;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1000;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255,255,255,.85);
+  border-radius: 50%;
+  background: rgba(255,255,255,.88);
+  color: #333;
+  font-size: 21px;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0,0,0,.12);
+  transition: transform .22s ease, background .22s ease;
 }
 
 .theme-toggle:hover {
-    transform: rotate(12deg) scale(1.07);
+  transform: rotate(10deg) scale(1.05);
 }
 
-/* QR modal */
-.qr-modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    padding: 20px;
-    background: rgba(10,10,10,.88);
-    align-items: center;
-    justify-content: center;
-    z-index: 5000;
-}
-
-.qr-modal.active {
-    display: flex;
-}
-
-.qr-modal img {
-    width: min(88vw, 500px);
-    height: min(88vw, 500px);
-    padding: 14px;
-    background: #fff;
-    border-radius: 18px;
-    box-shadow: 0 25px 80px rgba(0,0,0,.45);
-}
-
-.close-qr {
-    position: absolute;
-    top: 18px;
-    right: 20px;
-    width: 46px;
-    height: 46px;
-    border: none;
-    border-radius: 50%;
-    background: #fff;
-    color: #333;
-    font-size: 30px;
-    cursor: pointer;
-}
-
-/* Dark mode */
-body.dark-mode {
-    --surface: rgba(36,36,36,.92);
-    --text: #eee;
-    --muted: #aaa;
-    --line: rgba(255,255,255,.08);
-    --shadow: 0 18px 50px rgba(0,0,0,.30);
-    background:
-        radial-gradient(circle at 10% 0%, rgba(90,80,65,.18), transparent 30%),
-        #181818;
-    color: #eee;
-}
-
-body.dark-mode .brand-mark,
-body.dark-mode .quick-note,
-body.dark-mode .notice {
-    background: rgba(39,39,39,.88);
-    border-color: #333;
-}
-
-body.dark-mode .header h1,
-body.dark-mode .quick-note strong,
-body.dark-mode .library-info h2 {
-    color: #eee;
-}
-
-body.dark-mode .header p {
-    color: #c9c1b5;
-}
-
-body.dark-mode .header > span,
-body.dark-mode .quick-note small,
-body.dark-mode .card-description,
-body.dark-mode .library-info p,
-body.dark-mode .notice p,
-body.dark-mode .security-note p {
-    color: #aaa;
-}
-
-body.dark-mode .eyebrow,
-body.dark-mode .method-badge {
-    background: #303030;
-    color: #bbb;
-}
-
-body.dark-mode .payment-card {
-    background: rgba(36,36,36,.92);
-    border-color: #333;
-}
-
-body.dark-mode .phone-copy,
-body.dark-mode .account-copy {
-    background: #2b2b2b;
-    border-color: #414141;
-}
-
-body.dark-mode .copy-button,
-body.dark-mode .qr-open-hint,
-body.dark-mode .download-qr {
-    background: #343434;
-    border-color: #484848;
-    color: #eee;
-}
-
-body.dark-mode .copy-button:hover,
-body.dark-mode .qr-open-hint:hover,
-body.dark-mode .download-qr:hover {
-    background: #414141;
-}
-
-body.dark-mode .payment-warning {
-    background: #302d27;
-    border-color: #4a453c;
-    color: #ddd;
-}
-
-body.dark-mode .security-note {
-    background: #242424;
-    border-color: #3a3a3a;
-    box-shadow: none;
-}
-
-body.dark-mode .library-info {
-    background: linear-gradient(135deg, #242424, #2d2a26);
-    border-color: #3a3a3a;
-}
-
-body.dark-mode .library-icon {
-    background: #35322d;
-}
-
-body.dark-mode .theme-toggle {
-    background: #292929;
-    border-color: #444;
-}
-
-body.dark-mode footer {
-    color: #aaa;
-}
-
-/* Responsive */
-@media (max-width: 760px) {
-    .payment-container {
-        grid-template-columns: 1fr;
-    }
-
-    .payment-card {
-        max-width: 620px;
-        width: 100%;
-        margin: auto;
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 24px 12px 20px;
-    }
-
-    .theme-toggle {
-        width: 43px;
-        height: 43px;
-        top: 11px;
-        left: 11px;
-    }
-
-    .header {
-        margin-bottom: 19px;
-    }
-
-    .brand-mark {
-        width: 58px;
-        height: 58px;
-        font-size: 29px;
-    }
-
-    .header h1 {
-        font-size: 28px;
-    }
-
-    .header p {
-        font-size: 19px;
-    }
-
-    .quick-note {
-        padding: 11px 13px;
-        text-align: right;
-    }
-
-    .payment-card {
-        border-radius: 21px;
-        padding: 22px 14px;
-    }
-
-    .card-top {
-        align-items: flex-start;
-    }
-
-    .payment-logo {
-        min-width: 135px;
-        height: 45px;
-        font-size: 18px;
-    }
-
-    .method-badge {
-        font-size: 9px;
-    }
-
-    .qr-box {
-        width: 205px;
-        height: 205px;
-        padding: 12px;
-    }
-
-    .phone-copy,
-    .account-copy {
-        max-width: 100%;
-    }
-
-    .phone-copy span {
-        font-size: 15px;
-    }
-
-    .contact-actions {
-        grid-template-columns: 1fr;
-    }
-
-    .library-info {
-        align-items: flex-start;
-        padding: 18px;
-    }
-
-    .security-note,
-    .notice {
-        align-items: flex-start;
-        padding: 14px;
-    }
-}
-/* ===== Social Media ===== */
-
-.social-section {
-  margin-top: 24px;
-  padding: 24px;
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-}
-
-.social-heading {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 18px;
-}
-
-.social-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 25px;
-  background: linear-gradient(135deg, #777, #333);
-  color: white;
-  flex-shrink: 0;
-}
-
-.social-heading h2 {
-  margin: 0 0 5px;
-  font-size: 21px;
-}
-
-.social-heading p {
-  margin: 0;
-  font-size: 13px;
-  color: #777;
-}
-
-.social-links {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
-
-.social-card {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 15px;
-  border-radius: 16px;
-  text-decoration: none;
-  color: #333;
-  background: #f8f8f8;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  transition: 0.25s ease;
-}
-
-.social-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-.social-card-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 23px;
-  font-weight: bold;
-  flex-shrink: 0;
-}
-
-.social-card strong {
-  display: block;
-  font-size: 15px;
-  margin-bottom: 3px;
-}
-
-.social-card small {
-  display: block;
-  font-size: 11px;
-  color: #888;
-}
-
-.social-arrow {
-  margin-right: auto;
-  font-size: 18px;
-  color: #888;
-}
-
-/* Facebook */
-.social-card.facebook .social-card-icon {
-  background: #1877f2;
-}
-
-/* Instagram */
-.social-card.instagram .social-card-icon {
-  background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
-}
-
-/* TikTok */
-.social-card.tiktok .social-card-icon {
-  background: #111;
-}
-
-/* Dark Mode */
-body.dark-mode .social-section {
-  background: rgba(30, 30, 30, 0.9);
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-body.dark-mode .social-card {
-  background: #252525;
-  border-color: rgba(255, 255, 255, 0.08);
-  color: #fff;
-}
-
-body.dark-mode .social-heading p,
-body.dark-mode .social-card small {
-  color: #aaa;
-}
-
-/* Mobile */
-@media (max-width: 700px) {
-  .social-links {
-    grid-template-columns: 1fr;
-  }
-
-  .social-section {
-    padding: 18px;
-  }
-}
-/* ===== Floating WhatsApp ===== */
-
-.floating-whatsapp {
-  position: fixed;
-  left: 20px;
-  bottom: 20px;
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 16px;
-  border-radius: 50px;
-  background: #25d366;
-  color: white;
-  text-decoration: none;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-  font-size: 14px;
-  transition: 0.25s ease;
-}
-
-.floating-whatsapp span {
-  font-size: 21px;
-}
-
-.floating-whatsapp:hover {
-  transform: translateY(-4px) scale(1.03);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-}
-
-@media (max-width: 600px) {
-  .floating-whatsapp {
-    left: 14px;
-    bottom: 14px;
-    padding: 12px;
-  }
-
-  .floating-whatsapp strong {
-    display: none;
-  }
-}
-/* ===== Why Pay Section ===== */
-
-.why-pay {
-  margin-top: 24px;
-  padding: 24px;
-  border-radius: 22px;
-  background: linear-gradient(
-    135deg,
-    rgba(255,255,255,0.95),
-    rgba(246,242,235,0.95)
-  );
-  border: 1px solid rgba(0,0,0,0.06);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-}
-
-.why-pay-heading {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 20px;
-}
-
-.why-pay-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 25px;
-  background: linear-gradient(135deg, #777, #333);
-}
-
-.why-pay-heading h2 {
-  margin: 0 0 5px;
-  font-size: 21px;
-}
-
-.why-pay-heading p {
-  margin: 0;
-  color: #777;
-  font-size: 13px;
-}
-
-.why-pay-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
-
-.why-pay-card {
-  padding: 20px 15px;
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.header {
   text-align: center;
-  border-radius: 17px;
-  background: rgba(255,255,255,0.8);
-  border: 1px solid rgba(0,0,0,0.06);
-  transition: 0.25s ease;
+  margin-bottom: 24px;
 }
 
-.why-pay-card:hover {
-  transform: translateY(-3px);
+.brand-mark {
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 12px;
+  display: grid;
+  place-items: center;
+  border-radius: 22px;
+  background: rgba(255,255,255,.78);
+  border: 1px solid rgba(255,255,255,.9);
+  box-shadow: var(--shadow-soft);
+  font-size: 34px;
 }
 
-.why-icon {
-  font-size: 30px;
-  margin-bottom: 8px;
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 7px;
+  padding: 6px 13px;
+  border-radius: 999px;
+  background: rgba(85,85,85,.08);
+  color: #69645c;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  direction: ltr;
 }
 
-.why-pay-card h3 {
-  margin: 0 0 7px;
-  font-size: 16px;
+.header h1 {
+  color: #45423e;
+  font-size: clamp(30px, 5vw, 42px);
+  line-height: 1.25;
+  margin-bottom: 6px;
 }
 
-.why-pay-card p {
-  margin: 0;
-  font-size: 12px;
-  line-height: 1.7;
-  color: #777;
+.header p {
+  margin-bottom: 7px;
+  color: #756f63;
+  font-size: 22px;
+  font-weight: 800;
 }
 
-/* Dark Mode */
-
-body.dark-mode .why-pay {
-  background: rgba(30,30,30,0.9);
-  border-color: rgba(255,255,255,0.08);
+.header > span {
+  color: var(--muted);
+  font-size: 14px;
 }
-
-body.dark-mode .why-pay-card {
-  background: #252525;
-  border-color: rgba(255,255,255,0.08);
-}
-
-body.dark-mode .why-pay-heading p,
-body.dark-mode .why-pay-card p {
-  color: #aaa;
-}
-
-/* Mobile */
-
-@media (max-width: 700px) {
-  .why-pay {
-    padding: 18px;
-  }
-
-  .why-pay-grid {
-    grid-template-columns: 1fr;
-  }
-}
-/* ========================================
-   📱 MOBILE RESPONSIVE - ELGABRY PAYMENT
-   ======================================== */
-
-@media (max-width: 700px) {
-
-  /* الصفحة */
-  body {
-    overflow-x: hidden;
-  }
-
-  .container {
-    width: 100%;
-    max-width: 100%;
-    padding: 0 12px;
-    box-sizing: border-box;
-  }
-
-  /* الهيدر */
-  header {
-    padding: 20px 14px;
-    margin-bottom: 16px;
-  }
-
-  header h1 {
-    font-size: 25px;
-    line-height: 1.3;
-  }
-
-  header p {
-    font-size: 13px;
-  }
-
-  /* كروت الدفع */
-  .payment-grid {
-    grid-template-columns: 1fr !important;
-    gap: 16px;
-  }
-
-  .payment-card {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 18px 14px;
-    border-radius: 18px;
-  }
-
-  /* عنوان طريقة الدفع */
-  .payment-card h2 {
-    font-size: 19px;
-  }
-
-  /* منطقة QR */
-  .qr-box {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 14px;
-    margin-top: 12px;
-  }
-
-  .qr-frame {
-    width: min(72vw, 230px);
-    height: min(72vw, 230px);
-    margin: 12px auto;
-    padding: 10px;
-    box-sizing: border-box;
-  }
-
-  .qr-image {
-    width: 100%;
-    height: 100%;
-    max-width: 100%;
-    object-fit: contain;
-  }
-
-  .qr-title {
-    font-size: 16px;
-  }
-
-  .qr-hint {
-    font-size: 12px;
-    line-height: 1.6;
-  }
-
-  /* أزرار QR */
-  .qr-actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    width: 100%;
-  }
-
-  .qr-actions button,
-  .qr-actions a {
-    min-height: 44px;
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 12px;
-  }
-
-  /* أزرار الدفع */
-  .payment-card button,
-  .payment-card a {
-    min-height: 44px;
-  }
-
-  /* قسم ليه تدفع من هنا */
-  .why-pay {
-    padding: 17px 13px;
-    border-radius: 18px;
-  }
-
-  .why-pay-heading {
-    gap: 10px;
-  }
-
-  .why-pay-icon {
-    width: 44px;
-    height: 44px;
-    font-size: 21px;
-  }
-
-  .why-pay-heading h2 {
-    font-size: 18px;
-  }
-
-  .why-pay-heading p {
-    font-size: 11px;
-  }
-
-  .why-pay-grid {
-    grid-template-columns: 1fr !important;
-    gap: 9px;
-  }
-
-  .why-pay-card {
-    display: flex;
-    align-items: center;
-    text-align: right;
-    gap: 12px;
-    padding: 13px;
-  }
-
-  .why-icon {
-    margin: 0;
-    font-size: 25px;
-    flex-shrink: 0;
-  }
-
-  .why-pay-card h3 {
-    margin-bottom: 3px;
-    font-size: 15px;
-  }
-
-  .why-pay-card p {
-    font-size: 11px;
-    line-height: 1.6;
-  }
-
-  /* السوشيال ميديا */
-  .social-section {
-    padding: 17px 13px;
-    border-radius: 18px;
-  }
-
-  .social-heading {
-    gap: 10px;
-  }
-
-  .social-icon {
-    width: 44px;
-    height: 44px;
-    font-size: 21px;
-  }
-
-  .social-heading h2 {
-    font-size: 18px;
-  }
-
-  .social-heading p {
-    font-size: 11px;
-  }
-
-  .social-links {
-    grid-template-columns: 1fr !important;
-    gap: 9px;
-  }
-
-  .social-card {
-    min-height: 62px;
-    box-sizing: border-box;
-    padding: 10px 12px;
-  }
-
-  .social-card-icon {
-    width: 40px;
-    height: 40px;
-  }
-
-  /* معلومات المكتبة */
-  .library-info {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 16px 13px;
-  }
-
-  /* أزرار الموقع والواتساب */
-  .location-button,
-  .whatsapp-button {
-    width: 100%;
-    box-sizing: border-box;
-    min-height: 46px;
-  }
-
-  /* الملاحظة */
-  .notice,
-  .security-note,
-  .payment-warning {
-    padding: 13px;
-    font-size: 12px;
-    line-height: 1.7;
-  }
-
-  /* الفوتر */
-  footer {
-    padding: 20px 10px;
-    text-align: center;
-    font-size: 12px;
-  }
-
-  /* زر واتساب العائم */
-  .floating-whatsapp {
-    left: 12px;
-    bottom: 12px;
-    width: 48px;
-    height: 48px;
-    padding: 0;
-    border-radius: 50%;
-    justify-content: center;
-  }
-
-  .floating-whatsapp span {
-    font-size: 21px;
-  }
-
-  .floating-whatsapp strong {
-    display: none;
-  }
-
-  /* زر الوضع الليلي */
-  .theme-toggle {
-    width: 42px;
-    height: 42px;
-    font-size: 18px;
-  }
-
-}
-
-
-/* ========================================
-   📱 SMALL PHONES
-   ======================================== */
-
-@media (max-width: 380px) {
-
-  .container {
-    padding: 0 9px;
-  }
-
-  header h1 {
-    font-size: 22px;
-  }
-
-  .payment-card {
-    padding: 14px 11px;
-  }
-
-  .qr-frame {
-    width: 68vw;
-    height: 68vw;
-    max-width: 210px;
-    max-height: 210px;
-  }
-
-  .qr-actions {
-    grid-template-columns: 1fr;
-  }
-
-  .social-card {
-    padding: 9px;
-  }
-
-}
-/* ========================================
-   ELGABRY HEADER
-   ======================================== */
 
 .main-header {
   position: relative;
@@ -1430,7 +178,7 @@ body.dark-mode .why-pay-card p {
   padding: 24px;
   border-radius: 26px;
   background:
-    radial-gradient(circle at top left, rgba(255,255,255,.9), transparent 35%),
+    radial-gradient(circle at top left, rgba(255,255,255,.92), transparent 35%),
     linear-gradient(135deg, #f8f3e9, #e9e1d4);
   border: 1px solid rgba(0,0,0,.06);
   box-shadow: 0 12px 35px rgba(0,0,0,.08);
@@ -1446,11 +194,10 @@ body.dark-mode .why-pay-card p {
   width: 82px;
   height: 82px;
   padding: 7px;
-  flex-shrink: 0;
+  flex: 0 0 auto;
   border-radius: 22px;
   background: #fff;
   box-shadow: 0 8px 22px rgba(0,0,0,.12);
-  box-sizing: border-box;
 }
 
 .logo-wrapper img {
@@ -1461,16 +208,21 @@ body.dark-mode .why-pay-card p {
   border-radius: 16px;
 }
 
+.brand-text {
+  min-width: 0;
+}
+
 .brand-mini {
+  margin-bottom: 4px;
+  color: #777;
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 2px;
-  color: #777;
-  margin-bottom: 4px;
 }
 
 .brand-text h1 {
   margin: 0;
+  color: #333;
   font-size: 30px;
   line-height: 1.25;
 }
@@ -1482,8 +234,8 @@ body.dark-mode .why-pay-card p {
 }
 
 .header-subtitle {
-  margin-top: 17px;
   display: inline-flex;
+  margin-top: 17px;
   padding: 8px 14px;
   border-radius: 50px;
   background: rgba(255,255,255,.75);
@@ -1492,10 +244,831 @@ body.dark-mode .why-pay-card p {
   font-weight: 700;
 }
 
+.quick-note {
+  max-width: 620px;
+  margin: 0 auto 25px;
+  padding: 13px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  text-align: right;
+  background: rgba(255,255,255,.72);
+  border: 1px solid rgba(255,255,255,.85);
+  border-radius: 18px;
+  box-shadow: var(--shadow-soft);
+}
 
-/* ========================================
+.quick-note > span {
+  font-size: 25px;
+}
+
+.quick-note strong,
+.quick-note small {
+  display: block;
+}
+
+.quick-note strong {
+  color: #4d4943;
+  font-size: 14px;
+}
+
+.quick-note small {
+  margin-top: 3px;
+  color: #858078;
+  font-size: 12px;
+}
+
+/* =========================================================
+   PAYMENT CARDS
+   ========================================================= */
+
+.payment-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+/* support both possible class names */
+.payment-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.payment-card {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 25px 22px 23px;
+  border: 1px solid rgba(255,255,255,.85);
+  border-radius: 26px;
+  background: var(--surface);
+  backdrop-filter: blur(12px);
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.payment-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+}
+
+.instapay::before {
+  background: linear-gradient(90deg, var(--insta-dark), #9a67c1);
+}
+
+.vodafone::before {
+  background: linear-gradient(90deg, var(--vodafone-dark), #ed4444);
+}
+
+.payment-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 55px rgba(60,48,35,.15);
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.payment-logo {
+  min-width: 150px;
+  height: 48px;
+  padding: 0 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.instapay .payment-logo {
+  background: #eee6f8;
+  color: var(--insta);
+}
+
+.vodafone .payment-logo {
+  background: #fbe8e8;
+  color: #c80000;
+}
+
+.method-badge {
+  padding: 7px 9px;
+  border-radius: 999px;
+  background: #f2f0ec;
+  color: #77716a;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.payment-card h2 {
+  margin-bottom: 5px;
+  font-size: 20px;
+  line-height: 1.45;
+}
+
+.card-description {
+  margin-bottom: 14px;
+  color: #89837b;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   COPY ROWS
+   ========================================================= */
+
+.phone-copy,
+.account-copy {
+  direction: ltr;
+  width: fit-content;
+  max-width: 100%;
+  margin: 5px auto 15px;
+  padding: 8px 9px 8px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(248,246,242,.9);
+}
+
+.phone-copy span,
+.account-copy span {
+  min-width: 0;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.account-copy span {
+  font-size: 14px;
+  letter-spacing: .3px;
+}
+
+.copy-button {
+  flex: 0 0 auto;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 9px;
+  background: #fff;
+  color: #4b4843;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform .2s ease, background .2s ease;
+}
+
+.copy-button:hover {
+  transform: translateY(-1px);
+  background: #eae6df;
+}
+
+/* =========================================================
+   QR — IMPORTANT: NEVER FULL WIDTH
+   ========================================================= */
+
+.qr-box {
+  position: relative;
+  width: 220px !important;
+  height: 220px !important;
+  max-width: 220px !important;
+  max-height: 220px !important;
+  margin: 10px auto 15px !important;
+  padding: 10px !important;
+  display: grid !important;
+  place-items: center !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  background: #fff;
+  border: 1px solid #ece8e1;
+  border-radius: 20px;
+  box-shadow: 0 12px 25px rgba(0,0,0,.08);
+}
+
+.qr-placeholder {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  display: grid !important;
+  place-items: center !important;
+  overflow: hidden !important;
+}
+
+.qr-image {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  border-radius: 7px;
+  cursor: zoom-in;
+  transition: transform .2s ease;
+}
+
+.qr-image:hover {
+  transform: scale(1.02);
+}
+
+/* legacy class support; HTML الحالي يستخدم qr-box */
+.qr-frame {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 14px auto;
+  padding: 10px;
+  background: #fff;
+  border-radius: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 12px 25px rgba(0,0,0,.08);
+}
+
+.qr-frame .qr-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.qr-actions {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin: 10px 0 15px;
+}
+
+.qr-open-hint,
+.download-qr {
+  border: 1px solid #ddd7cd;
+  border-radius: 9px;
+  padding: 8px 11px;
+  background: #fff;
+  color: #55514b;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform .2s ease, background .2s ease;
+}
+
+.qr-open-hint:hover,
+.download-qr:hover {
+  transform: translateY(-1px);
+  background: #f0ece5;
+}
+
+.qr-title {
+  margin-bottom: 5px;
+  font-size: 17px;
+}
+
+.qr-hint {
+  margin: 0 auto;
+  color: #777;
+  font-size: 12px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* =========================================================
+   WARNING / NOTICE / SECURITY
+   ========================================================= */
+
+.payment-warning {
+  width: 100%;
+  margin: 0 auto 15px;
+  padding: 12px 13px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border: 1px solid #e6dcc9;
+  border-radius: 14px;
+  background: #f7f3e9;
+  color: #665d4d;
+  text-align: right;
+  line-height: 1.7;
+}
+
+.warning-icon {
+  flex: 0 0 auto;
+  font-size: 21px;
+  line-height: 1;
+}
+
+.payment-warning strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 13px;
+}
+
+.payment-warning p {
+  margin: 0;
+  font-size: 11px;
+}
+
+.notice,
+.security-note {
+  width: min(760px, 100%);
+  margin: 14px auto;
+  padding: 15px 18px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  border-radius: 17px;
+  box-shadow: var(--shadow-soft);
+}
+
+.notice {
+  background: rgba(255,255,255,.78);
+  border: 1px solid rgba(255,255,255,.85);
+}
+
+.security-note {
+  background: #f4f4f4;
+  border: 1px solid #ddd;
+}
+
+.notice-icon,
+.security-icon {
+  flex: 0 0 auto;
+  font-size: 25px;
+}
+
+.notice strong,
+.security-note strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.notice p,
+.security-note p {
+  color: #777;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.payment-button {
+  min-height: 50px;
+  padding: 13px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 900;
+  box-shadow: 0 8px 18px rgba(0,0,0,.10);
+  transition: transform .2s ease, filter .2s ease;
+}
+
+.payment-button:hover {
+  transform: translateY(-2px);
+  filter: brightness(.95);
+}
+
+.instapay .payment-button {
+  background: linear-gradient(135deg, var(--insta), var(--insta-dark));
+}
+
+.vodafone .payment-button {
+  background: linear-gradient(135deg, #e00000, var(--vodafone-dark));
+}
+
+.share-section {
+  margin: 25px 0 16px;
+  text-align: center;
+}
+
+.share-button {
+  border: 1px solid #65615b;
+  border-radius: 13px;
+  padding: 13px 22px;
+  background: #55514c;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(0,0,0,.10);
+  transition: transform .2s ease, filter .2s ease;
+}
+
+.share-button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+}
+
+/* =========================================================
+   LIBRARY INFO / CONTACT
+   ========================================================= */
+
+.library-info {
+  width: min(760px, 100%);
+  margin: 25px auto 15px;
+  padding: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  border: 1px solid rgba(255,255,255,.9);
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(255,255,255,.9), rgba(247,241,231,.92));
+  text-align: right;
+  box-shadow: var(--shadow-soft);
+}
+
+.library-icon {
+  width: 54px;
+  height: 54px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: #eee8dc;
+  font-size: 28px;
+}
+
+.library-info h2 {
+  margin-bottom: 5px;
+  font-size: 21px;
+}
+
+.library-info p {
+  color: #777;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.contact-actions {
+  width: min(700px, 100%);
+  margin: 15px auto 8px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 320px));
+  justify-content: center;
+  gap: 12px;
+}
+
+.location-button,
+.whatsapp-button {
+  min-height: 48px;
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 13px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 800;
+  transition: transform .2s ease, filter .2s ease;
+}
+
+.location-button,
+.whatsapp-button {
+  background: #555;
+}
+
+.location-button:hover,
+.whatsapp-button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+/* =========================================================
+   WHY PAY
+   ========================================================= */
+
+.why-pay {
+  width: 100%;
+  margin-top: 24px;
+  padding: 24px;
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(255,255,255,.95), rgba(246,242,235,.95));
+  box-shadow: var(--shadow-soft);
+}
+
+.why-pay-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.why-pay-icon {
+  width: 50px;
+  height: 50px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #777, #333);
+  font-size: 25px;
+}
+
+.why-pay-heading h2 {
+  margin-bottom: 5px;
+  font-size: 21px;
+}
+
+.why-pay-heading p {
+  color: #777;
+  font-size: 13px;
+}
+
+.why-pay-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.why-pay-card {
+  padding: 20px 15px;
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 17px;
+  background: rgba(255,255,255,.8);
+  text-align: center;
+  transition: transform .25s ease;
+}
+
+.why-pay-card:hover {
+  transform: translateY(-3px);
+}
+
+.why-icon {
+  margin-bottom: 8px;
+  font-size: 30px;
+}
+
+.why-pay-card h3 {
+  margin-bottom: 7px;
+  font-size: 16px;
+}
+
+.why-pay-card p {
+  color: #777;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   SOCIAL MEDIA
+   ========================================================= */
+
+.social-section {
+  width: 100%;
+  margin-top: 24px;
+  padding: 24px;
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 22px;
+  background: rgba(255,255,255,.85);
+  box-shadow: var(--shadow-soft);
+}
+
+.social-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.social-icon {
+  width: 50px;
+  height: 50px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #777, #333);
+  color: #fff;
+  font-size: 25px;
+}
+
+.social-heading h2 {
+  margin-bottom: 5px;
+  font-size: 21px;
+}
+
+.social-heading p {
+  color: #777;
+  font-size: 13px;
+}
+
+.social-links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.social-card {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 16px;
+  background: #f8f8f8;
+  color: #333;
+  text-decoration: none;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.social-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.1);
+}
+
+.social-card-icon {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.social-card strong {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 15px;
+}
+
+.social-card small {
+  display: block;
+  color: #888;
+  font-size: 11px;
+}
+
+.social-arrow {
+  margin-right: auto;
+  color: #888;
+  font-size: 18px;
+}
+
+.social-card.facebook .social-card-icon {
+  background: #1877f2;
+}
+
+.social-card.instagram .social-card-icon {
+  background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+}
+
+.social-card.tiktok .social-card-icon {
+  background: #111;
+}
+
+/* =========================================================
+   FLOATING WHATSAPP
+   ========================================================= */
+
+.floating-whatsapp {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 999;
+  min-height: 48px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 50px;
+  background: var(--whatsapp);
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 8px 25px rgba(0,0,0,.2);
+  font-size: 14px;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.floating-whatsapp span {
+  font-size: 21px;
+}
+
+.floating-whatsapp:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0,0,0,.25);
+}
+
+/* =========================================================
+   QR MODAL
+   ========================================================= */
+
+.qr-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  padding: 20px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10,10,10,.88);
+}
+
+.qr-modal.active {
+  display: flex;
+}
+
+.qr-modal img {
+  width: min(88vw, 500px);
+  height: min(88vw, 500px);
+  max-width: 500px;
+  max-height: 500px;
+  padding: 14px;
+  background: #fff;
+  border-radius: 18px;
+  object-fit: contain;
+  box-shadow: 0 25px 80px rgba(0,0,0,.45);
+}
+
+.close-qr {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+  color: #333;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  color: #777;
+  text-align: center;
+}
+
+footer p {
+  margin-bottom: 5px;
+  font-weight: 800;
+}
+
+footer small {
+  font-size: 11px;
+}
+
+.developer-link {
+  color: #555;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.developer-link:hover {
+  color: #8b7355;
+  text-decoration: underline;
+}
+
+/* =========================================================
    DARK MODE
-   ======================================== */
+   ========================================================= */
+
+body.dark-mode {
+  --surface: rgba(36,36,36,.94);
+  --surface-soft: #2b2b2b;
+  --text: #eee;
+  --muted: #aaa;
+  --line: rgba(255,255,255,.08);
+  --shadow: 0 18px 50px rgba(0,0,0,.30);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(90,80,65,.18), transparent 30%),
+    #181818;
+  color: #eee;
+}
 
 body.dark-mode .main-header {
   background:
@@ -1508,24 +1081,152 @@ body.dark-mode .logo-wrapper {
   background: #fff;
 }
 
+body.dark-mode .brand-text h1,
+body.dark-mode .header h1,
+body.dark-mode .quick-note strong,
+body.dark-mode .library-info h2,
+body.dark-mode .why-pay-heading h2,
+body.dark-mode .social-heading h2 {
+  color: #eee;
+}
+
 body.dark-mode .brand-text p,
-body.dark-mode .brand-mini {
+body.dark-mode .brand-mini,
+body.dark-mode .header p,
+body.dark-mode .header > span,
+body.dark-mode .quick-note small,
+body.dark-mode .card-description,
+body.dark-mode .library-info p,
+body.dark-mode .notice p,
+body.dark-mode .security-note p,
+body.dark-mode .why-pay-heading p,
+body.dark-mode .why-pay-card p,
+body.dark-mode .social-heading p,
+body.dark-mode .social-card small {
   color: #aaa;
 }
 
-body.dark-mode .header-subtitle {
-  background: rgba(255,255,255,.08);
+body.dark-mode .header-subtitle,
+body.dark-mode .eyebrow,
+body.dark-mode .method-badge {
+  background: #303030;
+  color: #bbb;
+}
+
+body.dark-mode .quick-note,
+body.dark-mode .notice {
+  background: rgba(39,39,39,.88);
+  border-color: #333;
+}
+
+body.dark-mode .payment-card {
+  background: rgba(36,36,36,.94);
+  border-color: #333;
+}
+
+body.dark-mode .phone-copy,
+body.dark-mode .account-copy {
+  background: #2b2b2b;
+  border-color: #414141;
+}
+
+body.dark-mode .copy-button,
+body.dark-mode .qr-open-hint,
+body.dark-mode .download-qr {
+  background: #343434;
+  border-color: #484848;
+  color: #eee;
+}
+
+body.dark-mode .copy-button:hover,
+body.dark-mode .qr-open-hint:hover,
+body.dark-mode .download-qr:hover {
+  background: #414141;
+}
+
+body.dark-mode .payment-warning {
+  background: #302d27;
+  border-color: #4a453c;
   color: #ddd;
 }
 
+body.dark-mode .security-note {
+  background: #242424;
+  border-color: #3a3a3a;
+  box-shadow: none;
+}
 
-/* ========================================
-   MOBILE HEADER
-   ======================================== */
+body.dark-mode .library-info,
+body.dark-mode .why-pay,
+body.dark-mode .social-section {
+  border-color: #3a3a3a;
+  background: rgba(30,30,30,.9);
+}
 
-@media (max-width: 700px) {
+body.dark-mode .library-icon,
+body.dark-mode .why-pay-card,
+body.dark-mode .social-card {
+  background: #252525;
+  border-color: rgba(255,255,255,.08);
+}
+
+body.dark-mode .social-card {
+  color: #fff;
+}
+
+body.dark-mode .theme-toggle {
+  background: #292929;
+  border-color: #444;
+  color: #eee;
+}
+
+body.dark-mode footer {
+  color: #aaa;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 760px) {
+  .payment-container,
+  .payment-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-card {
+    max-width: 620px;
+    margin-inline: auto;
+  }
+
+  .why-pay-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .social-links {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .container {
+    padding: 24px 12px 20px;
+  }
+
+  .theme-toggle {
+    top: 11px;
+    left: 11px;
+    width: 43px;
+    height: 43px;
+    font-size: 19px;
+  }
 
   .main-header {
+    margin-bottom: 19px;
     padding: 18px 15px;
     border-radius: 21px;
   }
@@ -1555,8 +1256,8 @@ body.dark-mode .header-subtitle {
   }
 
   .brand-text p {
-    font-size: 12px;
     margin-top: 3px;
+    font-size: 12px;
   }
 
   .header-subtitle {
@@ -1565,4 +1266,212 @@ body.dark-mode .header-subtitle {
     font-size: 11px;
   }
 
+  .header {
+    margin-bottom: 19px;
+  }
+
+  .brand-mark {
+    width: 58px;
+    height: 58px;
+    font-size: 29px;
+  }
+
+  .header h1 {
+    font-size: 28px;
+  }
+
+  .header p {
+    font-size: 19px;
+  }
+
+  .quick-note {
+    margin-bottom: 19px;
+    padding: 11px 13px;
+    text-align: right;
+  }
+
+  .payment-card {
+    padding: 22px 14px;
+    border-radius: 21px;
+  }
+
+  .card-top {
+    align-items: flex-start;
+  }
+
+  .payment-logo {
+    min-width: 135px;
+    height: 45px;
+    font-size: 18px;
+  }
+
+  .method-badge {
+    font-size: 9px;
+  }
+
+  .payment-card h2 {
+    font-size: 19px;
+  }
+
+  .phone-copy,
+  .account-copy {
+    max-width: 100%;
+  }
+
+  .phone-copy span {
+    font-size: 15px;
+  }
+
+  /* QR stays contained on mobile */
+  .qr-box {
+    width: 190px !important;
+    height: 190px !important;
+    max-width: 190px !important;
+    max-height: 190px !important;
+    padding: 9px !important;
+  }
+
+  .qr-actions {
+    gap: 8px;
+  }
+
+  .qr-open-hint,
+  .download-qr {
+    font-size: 11px;
+    padding: 8px 10px;
+  }
+
+  .contact-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .library-info {
+    align-items: flex-start;
+    padding: 18px;
+  }
+
+  .security-note,
+  .notice,
+  .payment-warning {
+    align-items: flex-start;
+    padding: 13px;
+  }
+
+  .why-pay,
+  .social-section {
+    padding: 17px 13px;
+    border-radius: 18px;
+  }
+
+  .why-pay-heading,
+  .social-heading {
+    gap: 10px;
+  }
+
+  .why-pay-icon,
+  .social-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 21px;
+  }
+
+  .why-pay-heading h2,
+  .social-heading h2 {
+    font-size: 18px;
+  }
+
+  .why-pay-heading p,
+  .social-heading p {
+    font-size: 11px;
+  }
+
+  .why-pay-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px;
+    text-align: right;
+  }
+
+  .why-icon {
+    margin: 0;
+    flex: 0 0 auto;
+    font-size: 25px;
+  }
+
+  .why-pay-card h3 {
+    margin-bottom: 3px;
+    font-size: 15px;
+  }
+
+  .why-pay-card p {
+    font-size: 11px;
+    line-height: 1.6;
+  }
+
+  .social-card {
+    min-height: 62px;
+    padding: 10px 12px;
+  }
+
+  .social-card-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .location-button,
+  .whatsapp-button {
+    width: 100%;
+  }
+
+  .floating-whatsapp {
+    left: 14px;
+    bottom: 14px;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .floating-whatsapp strong {
+    display: none;
+  }
+}
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 360px) {
+  .container {
+    padding-inline: 9px;
+  }
+
+  .brand-text h1 {
+    font-size: 21px;
+  }
+
+  .payment-card {
+    padding-inline: 11px;
+  }
+
+  .qr-box {
+    width: 175px !important;
+    height: 175px !important;
+    max-width: 175px !important;
+    max-height: 175px !important;
+    padding: 8px !important;
+  }
+
+  .qr-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .qr-open-hint,
+  .download-qr {
+    width: 100%;
+  }
 }
