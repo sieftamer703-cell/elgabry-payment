@@ -3,246 +3,325 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#555555">
+    <meta name="description" content="صفحة الدفع الإلكتروني لمكتبة الجبري">
     <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#555555">
-
-    <title>الدفع الإلكتروني | مكتبة الجبري</title>
-
     <link rel="stylesheet" href="style.css">
+    <title>الدفع الإلكتروني | مكتبة الجبري</title>
 </head>
 
 <body>
-<button id="themeToggle" class="theme-toggle" aria-label="تغيير الوضع">
-    🌙
-</button>
+    <button id="themeToggle" class="theme-toggle" aria-label="تغيير الوضع">🌙</button>
+
+    <div class="page-glow glow-one"></div>
+    <div class="page-glow glow-two"></div>
+
     <div class="container">
 
-        <header class="header">
-            <div class="book-icon">📚</div>
+        <header class="main-header">
 
-            <h1>مكتبة الجبري</h1>
+  <div class="brand-area">
 
-            <p>الدفع الإلكتروني</p>
+    <div class="logo-wrapper">
+      <img src="logo.png" alt="شعار مكتبة الجبري">
+    </div>
 
-            <span>اختار طريقة الدفع المناسبة ليك</span>
-        </header>
+    <div class="brand-text">
+      <div class="brand-mini">ELGABRY PAYMENT</div>
+      <h1>مكتبة الجبري</h1>
+      <p>الدفع الإلكتروني</p>
+    </div>
 
+  </div>
+
+  <div class="header-subtitle">
+    <span>سهل • سريع • آمن</span>
+  </div>
+
+</header>
+        <div class="quick-note">
+            <span>⚡</span>
+            <div>
+                <strong>سهل • سريع • آمن</strong>
+                <small>ادفع بالطريقة اللي تناسبك واحتفظ بإيصال التحويل</small>
+            </div>
+        </div>
 
         <main class="payment-container">
 
             <!-- InstaPay -->
             <section class="payment-card instapay">
-
-                <div class="payment-logo">
-                    <span>InstaPay</span>
+                <div class="card-top">
+                    <div class="payment-logo">
+                        <span>InstaPay</span>
+                    </div>
+                    <span class="method-badge">موصى به للـQR</span>
                 </div>
 
                 <h2>الدفع عن طريق InstaPay</h2>
+                <p class="card-description">امسح الكود أو استخدم زر الدفع المباشر</p>
 
-                <p class="number">
-                    <div class="phone-copy">
-    <span>01002517912</span>
-
-    <button
-        class="copy-button"
-        data-number="01002517912">
-        📋 نسخ
-    </button>
-</div>
+                <div class="phone-copy">
+                    <span>01002517912</span>
+                    <button class="copy-button" data-number="01002517912">📋 نسخ</button>
+                </div>
 
                 <div class="qr-box">
                     <div class="qr-placeholder">
-                        <img
-    class="qr-image"
-    src="instapay-qr.png"
-    alt="QR Code">
+                        <img class="qr-image" src="instapay-qr.png" alt="QR Code InstaPay">
                     </div>
                 </div>
-                <div class="phone-copy">
-    <span>seifjamica@instapay</span>
-    <button class="copy-button" data-number="seifjamica@instapay">
-        📋 نسخ
-    </button>
-</div>
-<a href="instapay-qr.png" download class="download-qr">
-    📥 حفظ QR
-</a>
 
-                <p class="instruction">
-                    امسح كود الـ QR لإتمام الدفع
-                </p>
-<div class="payment-warning">
+                <div class="account-copy">
+                    <span>diaa.6666@instapay</span>
+                    <button class="copy-button" data-number="diaa.6666@instapay">📋 نسخ</button>
+                </div>
 
-    ⚠️
-    <strong>تأكد من بيانات المستلم</strong>
+                <div class="qr-actions">
+                    <button class="qr-open-hint" type="button" onclick="document.querySelector('.qr-image').click()">
+                        🔍 تكبير QR
+                    </button>
+                    <a href="instapay-qr.png" download class="download-qr">📥 حفظ QR</a>
+                </div>
 
-    <p>
-        قبل تأكيد التحويل، تأكد من ظهور بيانات المستلم الصحيحة
-        داخل تطبيق الدفع.
-    </p>
+                <div class="payment-warning">
+                    <div class="warning-icon">⚠️</div>
+                    <div>
+                        <strong>تأكد من بيانات المستلم</strong>
+                        <p>قبل تأكيد التحويل، تأكد من ظهور بيانات المستلم الصحيحة داخل تطبيق الدفع.</p>
+                    </div>
+                </div>
 
-</div>
                 <a
-    href="https://ipn.eg/S/seifjamica/instapay/44wjBg"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="payment-button"
-    id="instapayButton"
->
-    📱 الدفع عبر InstaPay
-</a>
-                
+                    href="https://ipn.eg/S/diaa.6666/instapay/3F0bVP"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="payment-button"
+                    id="instapayButton">
+                    📱 الدفع عبر InstaPay
+                </a>
             </section>
-
 
             <!-- Vodafone Cash -->
             <section class="payment-card vodafone">
-
-                <div class="payment-logo">
-                    <span>Vodafone Cash</span>
+                <div class="card-top">
+                    <div class="payment-logo">
+                        <span>Vodafone Cash</span>
+                    </div>
+                    <span class="method-badge">محفظة إلكترونية</span>
                 </div>
 
                 <h2>الدفع عن طريق Vodafone Cash</h2>
+                <p class="card-description">استخدم الرقم أو امسح QR لإتمام الدفع</p>
 
-                <p class="number">
-                  <div class="phone-copy">
-    <span>01002517912</span>
-
-    <button
-        class="copy-button"
-        data-number="01002517912">
-        📋 نسخ
-    </button>
-</div>
-                </p>
+                <div class="phone-copy">
+                    <span>01002517912</span>
+                    <button class="copy-button" data-number="01002517912">📋 نسخ</button>
+                </div>
 
                 <div class="qr-box">
                     <div class="qr-placeholder">
-                        <img
-    class="qr-image"
-    src="v-qr.png"
-    alt="QR Code">
+                        <img class="qr-image" src="v-qr.png" alt="QR Code Vodafone Cash">
                     </div>
                 </div>
 
-                <p class="instruction">
-                          
-                </p>
+                <div class="qr-actions">
+                    <button class="qr-open-hint" type="button" onclick="document.querySelectorAll('.qr-image')[1].click()">
+                        🔍 تكبير QR
+                    </button>
+                    <a href="v-qr.png" download class="download-qr">📥 حفظ QR</a>
+                </div>
+
+                <div class="payment-warning">
+                    <div class="warning-icon">⚠️</div>
+                    <div>
+                        <strong>تأكد من بيانات المستلم</strong>
+                        <p>قبل تأكيد التحويل، تأكد من ظهور بيانات المستلم الصحيحة داخل تطبيق الدفع.</p>
+                    </div>
+                </div>
+
                 <a
-    href="v-qr.png"
-    download
-    class="download-qr">
-    📥 حفظ QR
-</a>
- <p class="instruction">
-                    امسح كود الـ QR لإتمام الدفع
-                </p>
-<div class="payment-warning">
-
-<div class="payment-warning">
-
-    ⚠️
-    <strong>تأكد من بيانات المستلم</strong>
-
-    <p>
-        قبل تأكيد التحويل، تأكد من ظهور بيانات المستلم الصحيحة
-        داخل تطبيق الدفع.
-    </p>
-
-</div>
-                <a
-                    href="#"
+                    href="https://web.vodafone.com.eg/ar/vodafone-cash"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     class="payment-button"
-                    id="vodafoneButton"
-                >
-                    الدفع عبر Vodafone Cash
+                    id="vodafoneButton">
+                    📱 فتح صفحة Vodafone Cash
                 </a>
-
             </section>
 
         </main>
 
-<div class="share-section">
-    <button id="shareButton" class="share-button">
-        📤 مشاركة صفحة الدفع
-    </button>
-</div>
-        <div class="notice">
-
-            <strong>تنبيه</strong>
-
-            <p>
-                بعد إتمام التحويل، يُرجى الاحتفاظ بإيصال الدفع.
-            </p>
-
+        <div class="share-section">
+            <button id="shareButton" class="share-button">
+                📤 مشاركة صفحة الدفع
+            </button>
         </div>
+
+        <div class="notice">
+            <div class="notice-icon">🧾</div>
+            <div>
+                <strong>بعد الدفع</strong>
+                <p>يُرجى الاحتفاظ بإيصال التحويل لحين تأكيد العملية.</p>
+            </div>
+        </div>
+
         <div class="security-note">
+            <div class="security-icon">🔐</div>
+            <div>
+                <strong>أمانك مهم</strong>
+                <p>مكتبة الجبري لا تطلب منك كلمة المرور أو الرقم السري أو رمز OTP الخاص بحسابك.</p>
+            </div>
+        </div>
 
-    🔐 <strong>أمانك مهم</strong>
+        <section class="library-info">
+            <div class="library-icon">📚</div>
+            <div>
+                <h2>مكتبة الجبري</h2>
+                <p>كتب خارجية • أدوات مدرسية • ألوان • شنط • ألعاب • هدايا</p>
+            </div>
+        </section>
+<section class="why-pay">
+  <div class="why-pay-heading">
+    <div class="why-pay-icon">✨</div>
+    <div>
+      <h2>ليه تدفع من هنا؟</h2>
+      <p>عملية دفع بسيطة وسريعة من مكتبة الجبري</p>
+    </div>
+  </div>
 
-    <p>
-        مكتبة الجبري لا تطلب منك كلمة المرور أو الرقم السري
-        أو رمز OTP الخاص بحسابك.
-    </p>
+  <div class="why-pay-grid">
 
-</div>
-
-<section class="library-info">
-
-    <div class="library-icon">
-        📚
+    <div class="why-pay-card">
+      <div class="why-icon">🔒</div>
+      <h3>أمان</h3>
+      <p>مكتبة الجبري لا تطلب منك كلمة السر أو الرقم السري أو رمز OTP.</p>
     </div>
 
-    <h2>مكتبة الجبري</h2>
+    <div class="why-pay-card">
+      <div class="why-icon">⚡</div>
+      
+      <h3>سرعة</h3>
+      <p>اختار طريقة الدفع المناسبة ليك ونفّذ عملية الدفع بسهولة.</p>
+    </div>
 
-    <p>
-        كتب خارجية • أدوات مدرسية • ألوان
-        • شنط • ألعاب • هدايا
-    </p>
+    <div class="why-pay-card">
+      <div class="why-icon">📱</div>
+      <h3>سهولة</h3>
+      <p>تقدر تدفع من الموبايل باستخدام QR أو بيانات الدفع الموجودة أمامك.</p>
+    </div>
 
+  </div>
+</section>
+        <div class="contact-actions">
+            <a
+                href="https://maps.app.goo.gl/KY6mcF4uJmbEaiUL8"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="location-button">
+                📍 الوصول إلى مكتبة الجبري
+            </a>
+
+            <a
+                href="https://wa.me/+201012993309"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="whatsapp-button">
+                💬 تواصل معنا على WhatsApp
+            </a>
+        </div>
+<section class="social-section">
+  <div class="social-heading">
+    <div class="social-icon">🌐</div>
+    <div>
+      <h2>تابع مكتبة الجبري</h2>
+      <p>تابعنا على السوشيال ميديا وخليك دايمًا معانا ❤️</p>
+    </div>
+  </div>
+
+  <div class="social-links">
+
+    <!-- Facebook -->
+    <a
+      href="https://www.facebook.com/profile.php?id=61586631060437&locale=ar_AR"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="social-card facebook"
+    >
+      <span class="social-card-icon">f</span>
+      <div>
+        <strong>Facebook</strong>
+        <small>تابعنا على فيسبوك</small>
+      </div>
+      <span class="social-arrow">←</span>
+    </a>
+
+    <!-- Instagram -->
+    <a
+      href="https://www.instagram.com/elgabry776"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="social-card instagram"
+    >
+      <span class="social-card-icon">◎</span>
+      <div>
+        <strong>Instagram</strong>
+        <small>@elgabry776</small>
+      </div>
+      <span class="social-arrow">←</span>
+    </a>
+
+    <!-- TikTok -->
+    <a
+      href="https://www.tiktok.com/@user52elgabry"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="social-card tiktok"
+    >
+      <span class="social-card-icon">♪</span>
+      <div>
+        <strong>TikTok</strong>
+        <small>@user52elgabry</small>
+      </div>
+      <span class="social-arrow">←</span>
+    </a>
+
+  </div>
 </section>
 <a
-    href="https://maps.app.goo.gl/KY6mcF4uJmbEaiUL8"
-    target="_blank"
-    class="location-button">
-
-    📍 الوصول إلى مكتبة الجبري
-
+  href="https://wa.me/201012993309"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="floating-whatsapp"
+  aria-label="تواصل معنا على واتساب"
+>
+  <span>💬</span>
+  <strong>واتساب</strong>
 </a>
-    <a
-    href="https://wa.me/+201012993309"
-    target="_blank"
-    class="whatsapp-button">
-
-    💬 تواصل معنا على WhatsApp
-
-</a>
-
-<footer>
-    <p>
-        © مكتبة الجبري
-    </p>
-
-    <small>
-        تم إنشاء وتطوير الموقع بواسطة
-        <a href="https://www.facebook.com/seif.tamer.999236?locale=ar_AR"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="developer-link">
-            Seif Jamica
-        </a>
-    </small>
-
-</footer>
-
+        <footer>
+            <p>© مكتبة الجبري</p>
+            <small>
+                تم إنشاء وتطوير الموقع بواسطة
+                <a
+                    href="https://www.facebook.com/seif.tamer.999236?locale=ar_AR"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="developer-link">
+                    Seif Jamica
+                </a>
+            </small>
+        </footer>
     </div>
 
     <script src="script.js"></script>
-<div id="qrModal" class="qr-modal">
 
-    <button id="closeQr" class="close-qr">
-        ×
-    </button>
+    <div id="qrModal" class="qr-modal">
+        <button id="closeQr" class="close-qr" aria-label="إغلاق">×</button>
+        <img id="largeQr" src="" alt="QR Code">
+    </div>
+</body>
+</html>
+
 
     <img id="largeQr" src="" alt="QR Code">
 
