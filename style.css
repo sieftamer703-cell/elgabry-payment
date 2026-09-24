@@ -2004,3 +2004,32 @@ body.dark-mode .header-subtitle {
         height: 62vw;
     }
 }
+/* QR SIZE FIX FOR MOBILE */
+@media (max-width: 700px) {
+    .qr-frame {
+        width: 155px !important;
+        height: 155px !important;
+        padding: 7px !important;
+        margin: 10px auto !important;
+        border-radius: 14px !important;
+    }
+
+    .qr-frame .qr-image {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+    }
+
+    .qr-frame::before {
+        font-size: 6px !important;
+        padding: 3px 7px !important;
+        top: -7px !important;
+    }
+}
+
+@media (max-width: 380px) {
+    .qr-frame {
+        width: 140px !important;
+        height: 140px !important;
+    }
+}
