@@ -1,5 +1,5 @@
 const paymentLinks = {
-    instapay: "https://ipn.eg/S/seifjamica/instapay/44wjBg",
+    instapay: "https://ipn.eg/S/diaa.6666/instapay/3F0bVP",
     vodafone: ""
 };
 
