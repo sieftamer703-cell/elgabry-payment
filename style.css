@@ -2070,3 +2070,35 @@ body.dark-mode .header-subtitle {
         height: 165px !important;
     }
 }
+/* ===== FINAL QR FIX ===== */
+
+.qr-box {
+    width: 190px !important;
+    height: 190px !important;
+    max-width: 190px !important;
+    margin: 12px auto !important;
+    padding: 8px !important;
+    box-sizing: border-box !important;
+}
+
+.qr-placeholder {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.qr-image {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+    display: block !important;
+}
+
+@media (max-width: 380px) {
+    .qr-box {
+        width: 165px !important;
+        height: 165px !important;
+        max-width: 165px !important;
+    }
+}
