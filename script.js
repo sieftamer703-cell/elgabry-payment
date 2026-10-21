@@ -1,187 +1,26 @@
-const paymentLinks = {
-    instapay: "https://ipn.eg/S/diaa.6666/instapay/3F0bVP",
-    vodafone: ""
-};
-
-
-// ==========================
-// روابط الدفع
-// ==========================
-
-const instapayButton = document.getElementById("instapayButton");
-const vodafoneButton = document.getElementById("vodafoneButton");
-
-
-// InstaPay
-if (paymentLinks.instapay !== "") {
-
-    instapayButton.href = paymentLinks.instapay;
-    instapayButton.target = "_blank";
-
-} else {
-
-    instapayButton.addEventListener("click", function (event) {
-
-        event.preventDefault();
-
-        alert("رابط InstaPay سيتم إضافته قريبًا.");
-
-    });
-
+'use strict';
+const PAYMENT = Object.freeze({
+  instapay: 'https://ipn.eg/S/diaa.6666/instapay/3F0bVP',
+  instapayId: 'diaa.6666@instapay',
+  vodafone: '01002517912',
+  whatsapp: '201012993309'
+});
+const $ = id => document.getElementById(id);
+let toastTimer;
+function notify(message){ const el=$('toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),3000); }
+async function copyText(value){
+  try { if(!navigator.clipboard?.writeText) throw Error('Clipboard unavailable');await navigator.clipboard.writeText(value);notify('تم النسخ بنجاح ✓');return true; }
+  catch { const field=document.createElement('textarea');field.value=value;field.setAttribute('readonly','');field.style.position='fixed';field.style.opacity='0';document.body.appendChild(field);field.select();let ok=false;try{ok=document.execCommand('copy')}catch{}field.remove();notify(ok?'تم النسخ بنجاح ✓':'تعذر النسخ تلقائيًا. انسخ البيانات يدويًا.');return ok; }
 }
-
-
-// Vodafone Cash
-if (paymentLinks.vodafone !== "") {
-
-    vodafoneButton.href = paymentLinks.vodafone;
-    vodafoneButton.target = "_blank";
-
-} else {
-
-    vodafoneButton.addEventListener("click", function (event) {
-
-        event.preventDefault();
-
-        alert("رابط Vodafone Cash سيتم إضافته قريبًا.");
-
-    });
-
-}
-
-
-// ==========================
-// الوضع الليلي والنهاري
-// ==========================
-
-const themeToggle = document.getElementById("themeToggle");
-
-const savedTheme = localStorage.getItem("elgabry-theme");
-
-if (savedTheme === "dark") {
-
-    document.body.classList.add("dark-mode");
-
-    themeToggle.textContent = "☀️";
-
-} else {
-
-    themeToggle.textContent = "🌙";
-
-}
-
-
-themeToggle.addEventListener("click", function () {
-
-    document.body.classList.toggle("dark-mode");
-
-    const isDark =
-        document.body.classList.contains("dark-mode");
-
-    if (isDark) {
-
-        themeToggle.textContent = "☀️";
-
-        localStorage.setItem("elgabry-theme", "dark");
-
-    } else {
-
-        themeToggle.textContent = "🌙";
-
-        localStorage.setItem("elgabry-theme", "light");
-
-    }
-
-});
-const shareButton = document.getElementById("shareButton");
-
-shareButton.addEventListener("click", async function () {
-
-    const shareData = {
-        title: "مكتبة الجبري",
-        text: "صفحة الدفع الإلكتروني لمكتبة الجبري",
-        url: window.location.href
-    };
-
-    if (navigator.share) {
-
-        try {
-            await navigator.share(shareData);
-        } catch (error) {
-            // المستخدم أغلق نافذة المشاركة
-        }
-
-    } else {
-
-        try {
-
-            await navigator.clipboard.writeText(
-                window.location.href
-            );
-
-            alert("✅ تم نسخ رابط صفحة الدفع");
-
-        } catch (error) {
-
-            alert("انسخ رابط الصفحة من شريط المتصفح.");
-
-        }
-
-    }
-
-});
-document.querySelectorAll(".copy-button").forEach(button => {
-
-    button.addEventListener("click", async () => {
-
-        const number = button.dataset.number;
-
-        try {
-
-            await navigator.clipboard.writeText(number);
-
-            const oldText = button.textContent;
-
-            button.textContent = "✅ تم النسخ";
-
-            setTimeout(() => {
-                button.textContent = oldText;
-            }, 1800);
-
-        } catch (error) {
-
-            alert("تعذر نسخ الرقم تلقائيًا.");
-
-        }
-
-    });
-
-});
-const qrModal = document.getElementById("qrModal");
-const largeQr = document.getElementById("largeQr");
-const closeQr = document.getElementById("closeQr");
-
-document.querySelectorAll(".qr-image").forEach(qr => {
-
-    qr.addEventListener("click", () => {
-
-        largeQr.src = qr.src;
-        qrModal.classList.add("active");
-
-    });
-
-});
-
-closeQr.addEventListener("click", () => {
-
-    qrModal.classList.remove("active");
-
-});
-
-qrModal.addEventListener("click", event => {
-
-    if (event.target === qrModal) {
-        qrModal.classList.remove("active");
-    }
-
-});
+function normalizedAmount(){return $('amount').value.trim().replace(/[٠-٩]/g,c=>String(c.charCodeAt(0)-0x660)).replace(/[۰-۹]/g,c=>String(c.charCodeAt(0)-0x6f0)).replace(/،/g,'.').replace(/,/g,'.');}
+function amountValue(){const s=normalizedAmount();if(!s)return '';const n=Number(s);if(!/^\d+(?:\.\d{1,2})?$/.test(s)||!Number.isFinite(n)||n<=0||n>100000000){$('amountError').hidden=false;$('amountError').textContent='من فضلك أدخل مبلغًا صحيحًا أكبر من صفر، بحد أقصى منزلتين عشريتين.';return null;}$('amountError').hidden=true;return n.toLocaleString('ar-EG',{maximumFractionDigits:2})+' جنيه';}
+function updateReceipt(){const amount=amountValue();const message=['أهلًا مكتبة الجبري،','أرغب في تأكيد تحويل الدفع.',amount===null||!amount?'':`المبلغ: ${amount}`,'وسيلة الدفع: [InstaPay / Vodafone Cash]','سأرفق إيصال التحويل هنا.'].filter(Boolean).join('\n');$('receiptButton').href=`https://wa.me/${PAYMENT.whatsapp}?text=${encodeURIComponent(message)}`;}
+$('amount').addEventListener('input',updateReceipt);
+$('instapayButton').href=PAYMENT.instapay;
+document.querySelectorAll('[data-copy]').forEach(button=>button.addEventListener('click',()=>copyText(button.dataset.copy)));
+$('vodafoneButton').addEventListener('click',()=>copyText(PAYMENT.vodafone));
+$('receiptButton').addEventListener('click',event=>{if(amountValue()===null){event.preventDefault();$('amount').focus();return;}updateReceipt();});
+$('shareButton').addEventListener('click',async()=>{const data={title:'مكتبة الجبري | الدفع الإلكتروني',text:'صفحة الدفع الإلكتروني لمكتبة الجبري',url:location.href};if(navigator.share){try{await navigator.share(data)}catch(error){if(error.name!=='AbortError')await copyText(location.href)}}else await copyText(location.href)});
+const theme=$('themeToggle');function applyTheme(dark){document.documentElement.classList.toggle('dark',dark);theme.textContent=dark?'☀️':'🌙';theme.setAttribute('aria-label',dark?'تفعيل الوضع النهاري':'تفعيل الوضع الليلي');theme.setAttribute('aria-pressed',String(dark));document.querySelector('meta[name="theme-color"]').content=dark?'#171a1c':'#eee9e1';}
+let saved;try{saved=localStorage.getItem('elgabry-theme')}catch{}applyTheme(saved==='dark'||(!saved&&window.matchMedia?.('(prefers-color-scheme: dark)').matches));theme.addEventListener('click',()=>{const dark=!document.documentElement.classList.contains('dark');applyTheme(dark);try{localStorage.setItem('elgabry-theme',dark?'dark':'light')}catch{}});
+$('year').textContent=new Date().getFullYear();updateReceipt();
